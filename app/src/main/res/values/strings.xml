@@ -1,3 +1,29 @@
 <resources>
-    <string name="app_name">Meal</string>
+    <string name="app_name">排队系统</string>
+    <string name="none_paired">没有匹配的设备</string>
+    <string name="scanning">正在搜索设备...</string>
+    <string name="select_device">选择设备链接</string>
+    <string name="none_found">未发现设备</string>
+    <string name="btnSearch">连接蓝牙打印机</string>
+    <string name="btnSend">打印</string>
+    <string name="btn_test">打印测试案例</string>
+    <string name="btnClose">关闭</string>
+    <string name="txt_content">&quot;&quot;</string>
+    <string name="menu_settings">设置</string>
+    <string name="strLang">ch</string>
+    <string name="button_scan">搜索设备</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">请输入用户名</string>
+    <string name="prompt_password">密码</string>
+    <string name="action_sign_in">登录</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">用户名不存在</string>
+    <string name="error_invalid_password">密码过短</string>
+    <string name="error_incorrect_password">密码错误</string>
+    <string name="error_field_required">用户名不能为空</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
 </resources>

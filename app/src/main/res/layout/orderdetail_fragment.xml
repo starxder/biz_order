@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="70dp"
-            android:text="桌号:A103"
+            android:text=""
             android:textSize="24dp" />
 
         <TextView
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="110dp"
-            android:text="订单号:123456789123456789" />
+            android:text="未选择任何订单" />
 
         <ListView
             android:id="@+id/meal_list"
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="60dp"
                 android:layout_marginTop="450dp"
-                android:text="应付:316.00元" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/orderdetail_discount"
@@ -71,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="60dp"
                 android:layout_marginTop="470dp"
-                android:text="优惠:50.00元" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/orderdetail_totalFee"
@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="60dp"
                 android:layout_marginTop="490dp"
-                android:text="总计:266.00元" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/orderdetail_paystate"
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="60dp"
                 android:layout_marginTop="530dp"
-                android:text="支付状态:微信已支付" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/orderdetail_paytime"
@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="60dp"
                 android:layout_marginTop="550dp"
-                android:text="支付时间:2017/05/22" />
+                android:text="" />
         </RelativeLayout>
 
         <TextView

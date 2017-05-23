@@ -77,7 +77,7 @@ public class UnpayFragment extends Fragment {
                     JSONObject jsonObject = new JSONObject(abc);
                     error = jsonObject.getString("error");
                     result = jsonObject.getString("result");
-                    if (error.equals("null")) {
+                    if (error.equals("")) {
                         pay_list = GsonUtils.getWxOrderByGson(result);
                         Log.d("hahahahahahahaha", result);
                         adapter = new CommonPayAdapter(getActivity(),pay_list);

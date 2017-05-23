@@ -78,6 +78,28 @@ public class OkManager {
     }
 
     /**
+     * 请求返回的是JSON字符串
+     *
+     * @param jsonValue
+     * @param callBack
+     */
+    private void onFailureJsonStringMethod(final String jsonValue, final Fun1 callBack) {
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                if (callBack != null) {
+                    try {
+                        callBack.onFailure(jsonValue);
+                    } catch (Exception e) {
+
+                    }
+                }
+            }
+        });
+
+    }
+
+    /**
      * 请求返回相应结果的是Json对象
      *
      * @param jsonValue
@@ -170,6 +192,7 @@ public class OkManager {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
+                onFailureJsonStringMethod("网络请求失败", callback);
             }
 
             @Override
@@ -322,6 +345,7 @@ public class OkManager {
     //回调  
     public interface Fun1 {
         void onResponse(String result);
+        void onFailure(String result);
     }
 
     interface Fun2 {
@@ -335,6 +359,7 @@ public class OkManager {
     public interface Fun4 {
         void onResponse(JSONObject jsonObject);
     }
+
 
 
 }  

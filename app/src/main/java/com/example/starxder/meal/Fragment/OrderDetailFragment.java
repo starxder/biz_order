@@ -43,28 +43,32 @@ public class OrderDetailFragment extends Fragment {
         if (payEvent != null) {
             Wxorder wxorder;
             wxorder = payEvent.getWxorder();
-            tv_tablenum.setText("桌号:"+wxorder.getTablecode());
-            tv_ordercode.setText("订单号:"+wxorder.getOutTradeNo());
-            tv_preprice.setText("原价:"+wxorder.getOriginFee());
-            tv_discount.setText("优惠:"+wxorder.getFavorFee());
-            tv_totalFee.setText("应付:"+wxorder.getTotalFee());
-
-            switch (wxorder.getPaystyle()){
-                case "wx":tv_paystate.setText("支付状态:"+"微信支付");
-                    break;
-                case"ali":tv_paystate.setText("支付状态:"+"支付宝支付");
-                    break;
-                case"cash":tv_paystate.setText("支付状态:"+"现金支付");
-                    break;
-                case"card":tv_paystate.setText("支付状态:"+"刷卡支付");
-                    break;
-                case"other":tv_paystate.setText("支付状态:"+"其他支付");
-                    break;
-                default:
-            }
-
-            tv_paytime.setText("支付时间:"+wxorder.getPaytime());
+           setValue(wxorder);
         }
+    }
+
+    private void setValue(Wxorder wxorder) {
+        tv_tablenum.setText("桌号:"+wxorder.getTablecode());
+        tv_ordercode.setText("订单号:"+wxorder.getOutTradeNo());
+        tv_preprice.setText("原价:"+wxorder.getOriginFee()+"元");
+        tv_discount.setText("优惠:"+wxorder.getFavorFee()+"元");
+        tv_totalFee.setText("应付:"+wxorder.getTotalFee()+"元");
+
+        switch (wxorder.getPaystyle()){
+            case "wx":tv_paystate.setText("支付状态:"+"微信支付");
+                break;
+            case"ali":tv_paystate.setText("支付状态:"+"支付宝支付");
+                break;
+            case"cash":tv_paystate.setText("支付状态:"+"现金支付");
+                break;
+            case"card":tv_paystate.setText("支付状态:"+"刷卡支付");
+                break;
+            case"other":tv_paystate.setText("支付状态:"+"其他支付");
+                break;
+            default:
+        }
+
+        tv_paytime.setText("支付时间:"+wxorder.getPaytime());
     }
 
     private void initView(View view) {

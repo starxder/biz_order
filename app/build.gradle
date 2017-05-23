@@ -29,5 +29,7 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.6.0'
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.j256.ormlite:ormlite-android:5.0'
+    compile 'com.j256.ormlite:ormlite-core:5.0'
     testCompile 'junit:junit:4.12'
 }

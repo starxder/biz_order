@@ -46,6 +46,7 @@ public class PayFragment extends Fragment {
         View view = inflater.inflate(R.layout.pay_fragment, container, false);
         pay_list = new ArrayList<Wxorder>();
         listview = (ListView) view.findViewById(R.id.pay_orderlist);
+
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -89,7 +90,7 @@ public class PayFragment extends Fragment {
                     JSONObject jsonObject = new JSONObject(abc);
                     error = jsonObject.getString("error");
                     result = jsonObject.getString("result");
-                    if (error.equals("null")) {
+                    if (error.equals("")) {
                         pay_list = GsonUtils.getWxOrderByGson(result);
                         adapter = new CommonPayAdapter(getActivity(), pay_list);
                         getActivity().runOnUiThread(new Runnable() {

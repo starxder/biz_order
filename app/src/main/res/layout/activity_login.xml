@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/background"
+    android:gravity="center_horizontal"
+    android:weightSum="1"
+    tools:context="com.example.starxder.meal.Activity.LoginActivity">
+
+    <!-- Login progress -->
+
+    <RelativeLayout
+        android:layout_width="370dp"
+        android:layout_height="173dp"
+        android:layout_gravity="center"
+        android:background="@mipmap/login">
+
+        <EditText
+            android:id="@+id/Username_Edt"
+            android:layout_width="310dp"
+            android:layout_height="30dp"
+            android:textColor="#ffffff"
+            android:background="#00000000"
+            android:hint="@string/prompt_email"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+
+
+        <EditText
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/Username_Edt"
+            android:layout_marginTop="17dp"
+            android:id="@+id/Password_Edt"
+            android:layout_width="310dp"
+            android:layout_height="40dp"
+            android:textColor="#ffffff"
+            android:background="#00000000"
+            android:hint="@string/prompt_password"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#00000000"
+            android:text="登录"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</LinearLayout>

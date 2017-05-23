@@ -9,6 +9,8 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.RelativeLayout;
 
+import com.example.starxder.meal.Bean.User;
+import com.example.starxder.meal.Dao.UserDao;
 import com.example.starxder.meal.Fragment.OrderDetailFragment;
 import com.example.starxder.meal.Fragment.PayFragment;
 import com.example.starxder.meal.Fragment.UnpayFragment;
@@ -31,9 +33,17 @@ public class MainActivity extends Activity implements OnClickListener {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
+        initData();
         intViews();
         intEvents();
         setContent(0);
+    }
+
+    // 初始化数据
+    private void initData() {
+        // 添加用户数据
+        User userData = new User(1,"admin", "1", "嘉拓科技", "1","嘉拓科技","");
+        new UserDao(MainActivity.this).insert(userData);
     }
 
     private void intViews() {
