@@ -33,13 +33,48 @@ public class Wxorder {
 
     private String paytime;//支付时间
 
-    private String paystyle;//支付类型  wechat alipay cash card other
+    private String paystyle;//支付类型  wx ali cash card other
 
     private String ifdeal;//是否出票 true false
 
     private String dateflag;//日期标记
 
     private String shopnum;//店铺号
+
+    private String favorFee;
+
+    private String originFee;
+
+    private String backDetail;
+
+    private String backFee;
+
+    public Wxorder(String outTradeNo, String appid, String mchId, String nonceStr, String sign, String body, String detail, String totalFee, String spbillCreateIp, String notifyUrl, String tradeType, String ordertime, String tablecode, String openid, String ifpay, String paytime, String paystyle, String ifdeal, String dateflag, String shopnum, String favorFee, String originFee, String backDetail, String backFee) {
+        this.outTradeNo = outTradeNo;
+        this.appid = appid;
+        this.mchId = mchId;
+        this.nonceStr = nonceStr;
+        this.sign = sign;
+        this.body = body;
+        this.detail = detail;
+        this.totalFee = totalFee;
+        this.spbillCreateIp = spbillCreateIp;
+        this.notifyUrl = notifyUrl;
+        this.tradeType = tradeType;
+        this.ordertime = ordertime;
+        this.tablecode = tablecode;
+        this.openid = openid;
+        this.ifpay = ifpay;
+        this.paytime = paytime;
+        this.paystyle = paystyle;
+        this.ifdeal = ifdeal;
+        this.dateflag = dateflag;
+        this.shopnum = shopnum;
+        this.favorFee = favorFee;
+        this.originFee = originFee;
+        this.backDetail = backDetail;
+        this.backFee = backFee;
+    }
 
     public String getOutTradeNo() {
         return outTradeNo;
@@ -201,4 +236,35 @@ public class Wxorder {
         this.shopnum = shopnum;
     }
 
+    public String getFavorFee() {
+        return favorFee;
+    }
+
+    public void setFavorFee(String favorFee) {
+        this.favorFee = favorFee;
+    }
+
+    public String getOriginFee() {
+        return originFee;
+    }
+
+    public void setOriginFee(String originFee) {
+        this.originFee = originFee;
+    }
+
+    public String getBackDetail() {
+        return backDetail;
+    }
+
+    public void setBackDetail(String backDetail) {
+        this.backDetail = backDetail;
+    }
+
+    public String getBackFee() {
+        return backFee;
+    }
+
+    public void setBackFee(String backFee) {
+        this.backFee = backFee;
+    }
 }

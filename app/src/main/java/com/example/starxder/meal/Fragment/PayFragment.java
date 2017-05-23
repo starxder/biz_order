@@ -49,7 +49,7 @@ public class PayFragment extends Fragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                EventBus.getDefault().post(new PayEvent(null,i+""));
+                EventBus.getDefault().post(new PayEvent(pay_list.get(i),i+""));
 
             }
         });
