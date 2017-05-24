@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">排队系统</string>
+    <string name="app_name">订单系统</string>
     <string name="none_paired">没有匹配的设备</string>
     <string name="scanning">正在搜索设备...</string>
     <string name="select_device">选择设备链接</string>

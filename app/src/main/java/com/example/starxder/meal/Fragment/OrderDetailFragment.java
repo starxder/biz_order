@@ -6,14 +6,29 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.starxder.meal.Activity.MainActivity;
+import com.example.starxder.meal.Adapter.MealAdapter;
+import com.example.starxder.meal.Bean.Meal;
+import com.example.starxder.meal.Bean.MealEZ;
 import com.example.starxder.meal.Bean.Wxorder;
+import com.example.starxder.meal.Dao.MealDao;
 import com.example.starxder.meal.Event.PayEvent;
 import com.example.starxder.meal.R;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by Administrator on 2017/5/22.
@@ -27,10 +42,14 @@ public class OrderDetailFragment extends Fragment {
     TextView tv_totalFee;
     TextView tv_paystate;
     TextView tv_paytime;
+    List<MealEZ> meallist = null;
+    ListView listview;
+    MealAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.orderdetail_fragment, container, false);
+        listview = (ListView) view.findViewById(R.id.meal_list);
         initView(view);
         EventBus.getDefault().register(this);
         return view;
@@ -50,6 +69,47 @@ public class OrderDetailFragment extends Fragment {
     private void setValue(Wxorder wxorder) {
         tv_tablenum.setText("桌号:"+wxorder.getTablecode());
         tv_ordercode.setText("订单号:"+wxorder.getOutTradeNo());
+
+
+
+        //在这里根据wxorder.getDetail获取菜ID和数量，在数据库里查询对应的名称和价格
+        String temp = wxorder.getDetail();
+        String[] details = temp.split(";");
+        String[] details_item;
+        int length = details.length;
+        int[] mealids = new int[length];
+        int[] mealNums= new int[length];
+        for (int i = 0;i<length;i++){
+            details_item = details[i].split(",");
+            mealids[i] = Integer.parseInt(details_item[0]);
+            mealNums[i] = Integer.parseInt(details_item[1]);
+        }
+
+        MealDao dao = new MealDao(getActivity());
+        String detail = wxorder.getDetail();
+        meallist = new ArrayList<MealEZ>();
+        Meal meal;
+        MealEZ mealEZ;
+        float mealprice;
+        String mealName;
+        int mealNum;
+        for (int i = 0 ; i <length;i++){
+            meal = dao.queryById(mealids[i]);
+            mealprice = Float.valueOf(meal.getMealprice());
+            mealName = meal.getMealname();
+            mealNum = mealNums[i];
+            mealEZ = new MealEZ(mealprice,mealName,mealNum);
+            meallist.add(mealEZ);
+        }
+        //得到meallist
+
+        adapter = new MealAdapter(meallist,getActivity());
+        listview.setAdapter(adapter);
+
+        //meallist 通过adapter绑定到ListView
+
+
+
         tv_preprice.setText("原价:"+wxorder.getOriginFee()+"元");
         tv_discount.setText("优惠:"+wxorder.getFavorFee()+"元");
         tv_totalFee.setText("应付:"+wxorder.getTotalFee()+"元");

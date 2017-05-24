@@ -71,10 +71,10 @@ public class CommonPayAdapter extends BaseAdapter{
 		holder.totalFee.setText("总价:"+model.getTotalFee());
 
 		if(model.getIfdeal().equals("false")){
-			holder.ifprint.setText("未出单");
+			holder.ifprint.setText("未出票");
 			holder.ifprint.setTextColor(0xffff0000);
-		}else if(model.getIfdeal().equals("ture")){
-			holder.ifprint.setText("已出单");
+		}else {
+			holder.ifprint.setText("已出票");
 			holder.ifprint.setTextColor(0xffffffff);
 		}
 
