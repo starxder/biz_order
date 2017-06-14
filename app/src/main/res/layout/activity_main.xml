@@ -19,14 +19,15 @@
             android:background="#53bbbe">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/head_pic"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_centerInParent="true"
-                android:src="@mipmap/head" />
+                />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_centerInParent="true"
                 android:src="@mipmap/headbg" />
 
@@ -44,6 +45,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/image_btn_paid"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -66,6 +68,7 @@
                 android:layout_below="@+id/btn_paid">
 
                 <ImageView
+                    android:id="@+id/image_btn_unpay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"

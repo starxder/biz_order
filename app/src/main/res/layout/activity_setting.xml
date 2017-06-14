@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:text="打印机1："
+            android:textSize="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp" />
+        <EditText
+            android:id="@+id/printer1_ip"
+            android:hint="请输入IP地址"
+            android:layout_width="300dp"
+            android:layout_height="50dp" />
+        <EditText
+            android:layout_marginLeft="50dp"
+            android:id="@+id/printer1_port"
+            android:hint="端口号"
+            android:layout_width="100dp"
+            android:layout_height="50dp" />
+        <CheckBox
+            android:id="@+id/printer1_cb"
+            android:text="勾选后启用"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:text="打印机2："
+            android:textSize="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp" />
+        <EditText
+            android:id="@+id/printer2_ip"
+            android:hint="请输入IP地址"
+            android:layout_width="300dp"
+            android:layout_height="50dp" />
+        <EditText
+            android:layout_marginLeft="50dp"
+            android:id="@+id/printer2_port"
+            android:hint="端口号"
+            android:layout_width="100dp"
+            android:layout_height="50dp" />
+        <CheckBox
+            android:id="@+id/printer2_cb"
+            android:text="勾选后启用"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:text="打印机3："
+            android:textSize="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp" />
+        <EditText
+            android:id="@+id/printer3_ip"
+            android:hint="请输入IP地址"
+            android:layout_width="300dp"
+            android:layout_height="50dp" />
+        <EditText
+            android:layout_marginLeft="50dp"
+            android:id="@+id/printer3_port"
+            android:hint="端口号"
+            android:layout_width="100dp"
+            android:layout_height="50dp" />
+        <CheckBox
+            android:id="@+id/printer3_cb"
+            android:text="勾选后启用"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:text="打印机4："
+            android:textSize="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp" />
+        <EditText
+            android:id="@+id/printer4_ip"
+            android:hint="请输入IP地址"
+            android:layout_width="300dp"
+            android:layout_height="50dp" />
+        <EditText
+            android:layout_marginLeft="50dp"
+            android:id="@+id/printer4_port"
+            android:hint="端口号"
+            android:layout_width="100dp"
+            android:layout_height="50dp" />
+        <CheckBox
+            android:id="@+id/printer4_cb"
+            android:text="勾选后启用"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:text="打印机5："
+            android:textSize="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp" />
+        <EditText
+            android:id="@+id/printer5_ip"
+            android:hint="请输入IP地址"
+            android:layout_width="300dp"
+            android:layout_height="50dp" />
+        <EditText
+            android:layout_marginLeft="50dp"
+            android:id="@+id/printer5_port"
+            android:hint="端口号"
+            android:layout_width="100dp"
+            android:layout_height="50dp" />
+        <CheckBox
+            android:id="@+id/printer5_cb"
+            android:text="勾选后启用"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

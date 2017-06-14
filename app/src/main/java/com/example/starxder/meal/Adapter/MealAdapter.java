@@ -7,9 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.starxder.meal.Bean.Meal;
 import com.example.starxder.meal.Bean.MealEZ;
-import com.example.starxder.meal.Bean.Wxorder;
 import com.example.starxder.meal.R;
 
 import java.util.ArrayList;

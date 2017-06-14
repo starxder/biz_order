@@ -1,6 +1,7 @@
 package com.example.starxder.meal.Utils;
 
 import com.example.starxder.meal.Bean.Meal;
+import com.example.starxder.meal.Bean.User;
 import com.example.starxder.meal.Bean.Wxorder;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -27,6 +28,15 @@ public class GsonUtils {
         List<Meal> list = new ArrayList<Meal>();
         Gson gson = new Gson();
         list = gson.fromJson(jsonString, new TypeToken<List<Meal>>() {
+
+        }.getType());
+        return list;
+    }
+
+    public static List<User> getUserByGson(String jsonString) {
+        List<User> list = new ArrayList<User>();
+        Gson gson = new Gson();
+        list = gson.fromJson(jsonString, new TypeToken<List<User>>() {
 
         }.getType());
         return list;

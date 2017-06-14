@@ -10,13 +10,18 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.starxder.meal.Adapter.CommonPayAdapter;
+import com.example.starxder.meal.Bean.User;
 import com.example.starxder.meal.Bean.Wxorder;
+import com.example.starxder.meal.Event.FlagEvent;
 import com.example.starxder.meal.Event.PayEvent;
+import com.example.starxder.meal.Event.UserEvent;
 import com.example.starxder.meal.R;
 import com.example.starxder.meal.Utils.CommonUtils;
 import com.example.starxder.meal.Utils.GsonUtils;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -36,9 +41,10 @@ import static android.content.ContentValues.TAG;
 public class PayFragment extends Fragment {
 
     List<Wxorder> pay_list = null;
-    String shopnum = "1";
     CommonPayAdapter adapter;
     ListView listview;
+    String shopNum;
+    User user;
 
 
     @Override
@@ -50,17 +56,39 @@ public class PayFragment extends Fragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                EventBus.getDefault().post(new PayEvent(pay_list.get(i),i+""));
-
+                EventBus.getDefault().post(new PayEvent(pay_list.get(i), i + ""));
             }
         });
-        loadData();
+        //注册EventBus
+        EventBus.getDefault().register(this);
 
         return view;
+
+
     }
 
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void onMessageEvent(UserEvent userEvent) {
+        if (userEvent != null) {
+            user = userEvent.getUser();
+            shopNum = user.getShopnum();
+            loadData(shopNum);
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void onMessageEvent(FlagEvent flagEvent) {
+        if (flagEvent != null) {
+            if (flagEvent.getFlag()) {
+                loadData(shopNum);
+            }
+        }
+    }
+
+
     //加载数据
-    private void loadData() {
+    private void loadData(String shopNum) {
         OkHttpClient client = new OkHttpClient.Builder()
                 .readTimeout(60 * 1000, TimeUnit.SECONDS)//设置读取超时时间
                 .writeTimeout(60 * 1000, TimeUnit.SECONDS)//设置写的超时时间
@@ -69,15 +97,14 @@ public class PayFragment extends Fragment {
         //使用Request.Builder来创建请求对象
         Request.Builder builder = new Request.Builder();
         //指定使用GET请求,并且指定要请求的地址
-        Request request = builder.get().url(CommonUtils.BaseUrl + "web-frame/wxorder/queryPayByParam.do?shopnum=" + shopnum).build();
+        Request request = builder.get().url(CommonUtils.BaseUrl + "web-frame/wxorder/queryPayByParam.do?shopnum=" + shopNum).build();
         //将请求加入请求队列,将请求封装成Call对象
         Call call = client.newCall(request);
         //使用异步的方式来得到请求的响应并且处理
         call.enqueue(new Callback() {
-
             @Override
             public void onFailure(Call call, IOException e) {
-
+                Log.e(TAG, "onFailure: " + e.toString());
             }
 
             @Override
@@ -97,7 +124,6 @@ public class PayFragment extends Fragment {
                             @Override
                             public void run() {
                                 listview.setAdapter(adapter);
-
                             }
                         });
                     }
@@ -114,5 +140,6 @@ public class PayFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

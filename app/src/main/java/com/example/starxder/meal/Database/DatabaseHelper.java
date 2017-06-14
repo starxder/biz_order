@@ -8,6 +8,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.starxder.meal.Bean.Meal;
+import com.example.starxder.meal.Bean.Printer;
 import com.example.starxder.meal.Bean.User;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
@@ -76,6 +77,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         try {
             TableUtils.createTable(connectionSource, User.class);
             TableUtils.createTable(connectionSource, Meal.class);
+            TableUtils.createTable(connectionSource, Printer.class);
+            int i =1;
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -86,7 +89,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     public void onUpgrade(SQLiteDatabase database, ConnectionSource connectionSource, int oldVersion, int newVersion) {
         try {
             TableUtils.dropTable(connectionSource, User.class, true);
-            TableUtils.dropTable(connectionSource, User.class, true);
+            TableUtils.dropTable(connectionSource, Meal.class, true);
+            TableUtils.dropTable(connectionSource, Printer.class,true);
+
             onCreate(database, connectionSource);
         } catch (SQLException e) {
             e.printStackTrace();

@@ -30,23 +30,18 @@ public class CommonPayAdapter extends BaseAdapter{
 	
 	@Override
 	public int getCount() {
-
 		return common_list.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
-
 		return common_list.get(position);
 	}
 
 	@Override
 	public long getItemId(int position) {
-
 		return position;
 	}
-
-	
 
 	@SuppressLint("InflateParams")
 	@Override
@@ -62,10 +57,8 @@ public class CommonPayAdapter extends BaseAdapter{
 		} else {
 			holder = (HlaHolder) view.getTag();
 		}
-		
 		final Wxorder model = common_list.get(position);
-		
-		
+
 		holder.outTradeNo.setText("订单号:"+model.getOutTradeNo());
 		holder.tablecode.setText(model.getTablecode());
 		holder.totalFee.setText("总价:"+model.getTotalFee());

@@ -3,44 +3,53 @@ package com.example.starxder.meal.Bean;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-/**
- * Created by Administrator on 2017/5/23.
- */
 @DatabaseTable(tableName = "user")
 public class User {
-    @DatabaseField(generatedId = true, columnName = "id")
+    @DatabaseField(columnName = "description")
+    private String description;
+    @DatabaseField(columnName = "groupId")
+    private int groupId;
+    @DatabaseField(columnName = "headpicurl")
+    private String headpicurl;
+    @DatabaseField(id = true)
     private int id;
-
     @DatabaseField(columnName = "loginName")
     private String loginName;
-
-    @DatabaseField(columnName = "passWord")
-    private String passWord;
-
+    @DatabaseField(columnName = "modifyTime")
+    private String modifyTime;
+    @DatabaseField(columnName = "ordertable")
+    private String ordertable;
+    @DatabaseField(columnName = "password")
+    private String password;
+    @DatabaseField(columnName = "shopnum")
+    private String shopnum;
+    @DatabaseField(columnName = "tabletype")
+    private String tabletype;
     @DatabaseField(columnName = "userName")
     private String userName;
 
-    @DatabaseField(columnName = "shopNum")
-    private String shopNum;
-
-    @DatabaseField(columnName = "shopName")
-    private String shopName;
-
-    @DatabaseField(columnName = "headpicUrl")
-    private String headpicUrl;//100*100px
-
-    public User (){
-
+    public String getDescription() {
+        return description;
     }
 
-    public User(int id, String loginName, String passWord, String userName, String shopNum, String shopName, String headpicUrl) {
-        this.id = id;
-        this.loginName = loginName;
-        this.passWord = passWord;
-        this.userName = userName;
-        this.shopNum = shopNum;
-        this.shopName = shopName;
-        this.headpicUrl = headpicUrl;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(int groupId) {
+        this.groupId = groupId;
+    }
+
+    public String getHeadpicurl() {
+        return headpicurl;
+    }
+
+    public void setHeadpicurl(String headpicurl) {
+        this.headpicurl = headpicurl;
     }
 
     public int getId() {
@@ -59,12 +68,44 @@ public class User {
         this.loginName = loginName;
     }
 
-    public String getPassWord() {
-        return passWord;
+    public String getModifyTime() {
+        return modifyTime;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setModifyTime(String modifyTime) {
+        this.modifyTime = modifyTime;
+    }
+
+    public String getOrdertable() {
+        return ordertable;
+    }
+
+    public void setOrdertable(String ordertable) {
+        this.ordertable = ordertable;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getShopnum() {
+        return shopnum;
+    }
+
+    public void setShopnum(String shopnum) {
+        this.shopnum = shopnum;
+    }
+
+    public String getTabletype() {
+        return tabletype;
+    }
+
+    public void setTabletype(String tabletype) {
+        this.tabletype = tabletype;
     }
 
     public String getUserName() {
@@ -73,29 +114,5 @@ public class User {
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public String getShopNum() {
-        return shopNum;
-    }
-
-    public void setShopNum(String shopNum) {
-        this.shopNum = shopNum;
-    }
-
-    public String getShopName() {
-        return shopName;
-    }
-
-    public void setShopName(String shopName) {
-        this.shopName = shopName;
-    }
-
-    public String getHeadpicUrl() {
-        return headpicUrl;
-    }
-
-    public void setHeadpicUrl(String headpicUrl) {
-        this.headpicUrl = headpicUrl;
     }
 }

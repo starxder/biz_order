@@ -68,7 +68,7 @@ public class MealDao {
         return meals;
     }
 
-    // 根据ID取出用户信息
+    // 根据ID取出meal信息
     public Meal queryById(int id) {
         Meal meals = null;
         try {
@@ -78,4 +78,33 @@ public class MealDao {
         }
         return meals;
     }
+
+    // 根据loginName取出用户信息
+    public Meal queryBymealid(String mealid) {
+        List<Meal> list = null;
+        try {
+            list = dao.queryBuilder().where().like("mealid", mealid).query();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list.get(0);
+    }
+    // 取出全部信息
+    public List<Meal> queryForAll() throws SQLException {
+        List<Meal> list = null;
+        list = dao.queryForAll();
+        return list;
+    }
+
+    // 删除全部信息
+    public void deleteAll() throws SQLException {
+        List<Meal> list =  queryForAll();
+        for(Meal meal :list){
+            delete(meal);
+        }
+    }
+
+
+
 }

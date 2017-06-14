@@ -41,15 +41,19 @@ public class Wxorder {
 
     private String shopnum;//店铺号
 
-    private String favorFee;
+    private String favorFee;// 优惠额度
 
-    private String originFee;
+    private String originFee;// 原价
 
-    private String backDetail;
+    private String backDetail;//退菜详情
 
-    private String backFee;
+    private String backFee;//退款金额
 
-    public Wxorder(String outTradeNo, String appid, String mchId, String nonceStr, String sign, String body, String detail, String totalFee, String spbillCreateIp, String notifyUrl, String tradeType, String ordertime, String tablecode, String openid, String ifpay, String paytime, String paystyle, String ifdeal, String dateflag, String shopnum, String favorFee, String originFee, String backDetail, String backFee) {
+    private String takeout;//外卖  true false
+
+    private String takeoutInfo; //name + phoneNumber + address
+
+    public Wxorder(String outTradeNo, String appid, String mchId, String nonceStr, String sign, String body, String detail, String totalFee, String spbillCreateIp, String notifyUrl, String tradeType, String ordertime, String tablecode, String openid, String ifpay, String paytime, String paystyle, String ifdeal, String dateflag, String shopnum, String favorFee, String originFee, String backDetail, String backFee, String takeout, String takeoutInfo) {
         this.outTradeNo = outTradeNo;
         this.appid = appid;
         this.mchId = mchId;
@@ -74,6 +78,8 @@ public class Wxorder {
         this.originFee = originFee;
         this.backDetail = backDetail;
         this.backFee = backFee;
+        this.takeout = takeout;
+        this.takeoutInfo = takeoutInfo;
     }
 
     public String getOutTradeNo() {
@@ -266,5 +272,21 @@ public class Wxorder {
 
     public void setBackFee(String backFee) {
         this.backFee = backFee;
+    }
+
+    public String getTakeout() {
+        return takeout;
+    }
+
+    public void setTakeout(String takeout) {
+        this.takeout = takeout;
+    }
+
+    public String getTakeoutInfo() {
+        return takeoutInfo;
+    }
+
+    public void setTakeoutInfo(String takeoutInfo) {
+        this.takeoutInfo = takeoutInfo;
     }
 }

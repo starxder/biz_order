@@ -32,6 +32,13 @@
             android:name=".Activity.MainActivity"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.TranslucentDecor">
         </activity>
+
+        <activity android:name=".Activity.SettingActivity"
+
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.TranslucentDecor">
+        </activity>
+
+
     </application>
 
 </manifest>
