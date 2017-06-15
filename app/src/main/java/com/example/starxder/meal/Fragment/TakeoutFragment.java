@@ -49,9 +49,9 @@ public class TakeoutFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.pay_fragment, container, false);
+        View view = inflater.inflate(R.layout.unpay_fragment, container, false);
         pay_list = new ArrayList<Wxorder>();
-        listview = (ListView) view.findViewById(R.id.pay_orderlist);
+        listview = (ListView) view.findViewById(R.id.unpay_orderlist);
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

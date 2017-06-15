@@ -49,9 +49,9 @@ public class UnpayFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.pay_fragment, container, false);
+        View view = inflater.inflate(R.layout.takeout_fragment, container, false);
         pay_list = new ArrayList<Wxorder>();
-        listview = (ListView) view.findViewById(R.id.pay_orderlist);
+        listview = (ListView) view.findViewById(R.id.takeout_orderlist);
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
