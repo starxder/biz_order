@@ -62,6 +62,11 @@ public class CommonPayAdapter extends BaseAdapter{
 		holder.outTradeNo.setText("订单号:"+model.getOutTradeNo());
 		holder.tablecode.setText(model.getTablecode());
 		holder.totalFee.setText("总价:"+model.getTotalFee());
+		if(model.getTakeout().equals("true")){
+			String temp = model.getTakeoutInfo();
+			String[] details = temp.split(";");
+			holder.tablecode.setText(details[1]);
+		}
 
 		if(model.getIfdeal().equals("false")){
 			holder.ifprint.setText("未出票");

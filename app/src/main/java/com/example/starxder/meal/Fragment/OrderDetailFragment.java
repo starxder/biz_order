@@ -89,7 +89,7 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
         btn_paystyle = (TextView) view.findViewById(R.id.btn_paystyle);
         btn_paystyle.setOnClickListener(this);
         manager = OkManager.getInstance();
-        int i=1;
+        int i = 1;
 
     }
 
@@ -109,53 +109,63 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
             }
         }
         btn_print.setEnabled(true);
-        btn_print.setTextColor(Color.argb(255,255,255,255));
+        btn_print.setTextColor(Color.argb(255, 255, 255, 255));
 
     }
 
     private void setValue(Wxorder wxorder) {
-        tv_tablenum.setText("桌号:" + wxorder.getTablecode());
-        tv_ordercode.setText("订单号:" + wxorder.getOutTradeNo());
+        tv_tablenum.setText("桌号：" + wxorder.getTablecode());
+        tv_ordercode.setText("订单号：" + wxorder.getOutTradeNo());
+        if (wxorder.getTakeout().equals("true")){
+            String temp = wxorder.getTakeoutInfo();
+            String[] details = temp.split(";");
+
+
+            tv_tablenum.setText("姓名：" + details[0]+"   "+"电话："+details[1]);
+            tv_ordercode.setText("地址：" + details[2]);
+        }
+
+
         setListView(wxorder);
         if (wxorder.getOriginFee().equals("")) {
-            tv_preprice.setText("原价:" + wxorder.getTotalFee() + "元");
+            tv_preprice.setText("原价：" + wxorder.getTotalFee() + "元");
         } else {
-            tv_preprice.setText("原价:" + wxorder.getOriginFee() + "元");
+            tv_preprice.setText("原价：" + wxorder.getOriginFee() + "元");
         }
 
         if (wxorder.getFavorFee().equals("")) {
-            tv_discount.setText("优惠:" + "暂无优惠");
+            tv_discount.setText("优惠：" + "暂无优惠");
         } else {
-            tv_discount.setText("优惠:" + wxorder.getFavorFee() + "元");
+            tv_discount.setText("优惠：" + wxorder.getFavorFee() + "元");
         }
 
-        tv_totalFee.setText("应付:" + wxorder.getTotalFee() + "元");
+        tv_totalFee.setText("应付：" + wxorder.getTotalFee() + "元");
 
         switch (wxorder.getPaystyle()) {
             case "wx":
-                tv_paystate.setText("支付状态:" + "微信支付");
+                tv_paystate.setText("支付状态：" + "微信支付");
                 break;
             case "ali":
-                tv_paystate.setText("支付状态:" + "支付宝支付");
+                tv_paystate.setText("支付状态：" + "支付宝支付");
                 break;
             case "cash":
-                tv_paystate.setText("支付状态:" + "现金支付");
+                tv_paystate.setText("支付状态：" + "现金支付");
                 break;
             case "card":
-                tv_paystate.setText("支付状态:" + "刷卡支付");
+                tv_paystate.setText("支付状态：" + "刷卡支付");
                 break;
             case "other":
-                tv_paystate.setText("支付状态:" + "其他支付");
+                tv_paystate.setText("支付状态：" + "其他支付");
                 break;
             default:
 
                 break;
         }
 
-        tv_paytime.setText("支付时间:" + wxorder.getPaytime());
+        tv_paytime.setText("支付时间：" + wxorder.getPaytime());
 
         if (wxorder.getIfpay().equals("false")) {
-            tv_paystate.setText("支付状态:" + "未支付");
+            tv_paystate.setText("支付状态：" + "未支付");
             tv_paytime.setText("");
         }
 
@@ -233,24 +243,23 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
 
                 break;
             case R.id.btn_print:
-                if (wxorder!=null){
+                if (wxorder != null) {
                     upDateIfdeal();
                     PrinterUtils printerUtils;
                     PrinterDao printerDao = new PrinterDao(getActivity());
-                    for (int i=0 ;i<5;i++){
-                        if (printerDao.queryById(1).getChecked().equals("true")){
-                            String ip = printerDao.queryById(1).getIpaddress();
-                            int prot = Integer.valueOf(printerDao.queryById(1).getProt());
-
-                            printerUtils = new PrinterUtils(ip,prot,meallist,wxorder);
-                            printerUtils.print();
+                    for (int i = 0; i < 5; i++) {
+                        if (printerDao.queryById(i) != null) {
+                            if (printerDao.queryById(i).getChecked().equals("true")) {
+                                String ip = printerDao.queryById(i).getIpaddress();
+                                int prot = Integer.valueOf(printerDao.queryById(i).getProt());
+                                printerUtils = new PrinterUtils(ip, prot, meallist, wxorder);
+                                printerUtils.print();
+                            }
                         }
+
                     }
-
-
                     btn_print.setEnabled(false);
-                    btn_print.setTextColor(Color.argb(55,255,255,255));
-
+                    btn_print.setTextColor(Color.argb(55, 255, 255, 255));
                 }
                 break;
 
@@ -292,7 +301,7 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String a = response.body().string();
-                if (a.equals("true")){
+                if (a.equals("true")) {
                     try {
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
@@ -304,7 +313,7 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                }else{
+                } else {
                     try {
                         getActivity().runOnUiThread(new Runnable() {
                             @Override

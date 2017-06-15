@@ -23,6 +23,7 @@ import com.example.starxder.meal.Event.FlagEvent;
 import com.example.starxder.meal.Event.UserEvent;
 import com.example.starxder.meal.Fragment.OrderDetailFragment;
 import com.example.starxder.meal.Fragment.PayFragment;
+import com.example.starxder.meal.Fragment.TakeoutFragment;
 import com.example.starxder.meal.Fragment.UnpayFragment;
 import com.example.starxder.meal.R;
 import com.example.starxder.meal.Utils.CommonUtils;
@@ -41,14 +42,16 @@ public class MainActivity extends Activity implements OnClickListener {
 
     public RelativeLayout unpay_tab;
     public RelativeLayout pay_tab;
+    public RelativeLayout takeout_tab;
     public RelativeLayout btn_setting;
     public OrderDetailFragment orderDetailFragment;
     public UnpayFragment unpayFragment;
     public PayFragment payFragment;
+    public TakeoutFragment takeoutFragment;
     FragmentManager fm;
     private ImageView head_pic;
     String TAG = "MainActivity", loginName, headpic_url, tableName;
-    ImageView image_paid, image_unpay;
+    ImageView image_paid, image_unpay,image_takeout;
     User user;
     UserDao userDao;
     private static final int SUCCESS = 1;
@@ -66,8 +69,11 @@ public class MainActivity extends Activity implements OnClickListener {
         setContent(0);
         image_paid.setImageResource(R.mipmap.icon_paid);
         image_unpay.setImageResource(R.mipmap.icon_unpay_unpick);
+        image_takeout.setImageResource(R.mipmap.icon_takeout_unpick);
         //向其他界面发送用户信息
         EventBus.getDefault().postSticky(new UserEvent(user, "1"));
+        //刷新数据
+        EventBus.getDefault().postSticky(new FlagEvent(true));
     }
 
     private void initUser() {
@@ -115,15 +121,18 @@ public class MainActivity extends Activity implements OnClickListener {
     private void initViews() {
         unpay_tab = (RelativeLayout) findViewById(R.id.btn_unpay);
         pay_tab = (RelativeLayout) findViewById(R.id.btn_paid);
+        takeout_tab = (RelativeLayout)findViewById(R.id.btn_takeout);
         btn_setting = (RelativeLayout)findViewById(R.id.btn_setting);
         head_pic = (ImageView) findViewById(R.id.head_pic);
         image_paid = (ImageView) findViewById(R.id.image_btn_paid);
         image_unpay = (ImageView) findViewById(R.id.image_btn_unpay);
+        image_takeout = (ImageView)findViewById(R.id.image_btn_takeout);
 
 
         fm = getFragmentManager();
         unpayFragment = new UnpayFragment();
         payFragment = new PayFragment();
+        takeoutFragment = new TakeoutFragment();
         orderDetailFragment = new OrderDetailFragment();
 
 
@@ -131,6 +140,7 @@ public class MainActivity extends Activity implements OnClickListener {
         transaction.add(R.id.orderdetail_fragment, orderDetailFragment);
         transaction.add(R.id.orderlist_fragment, payFragment);
         transaction.add(R.id.orderlist_fragment, unpayFragment);
+        transaction.add(R.id.orderlist_fragment, takeoutFragment);
         transaction.commit();
 
         userDao = new UserDao(MainActivity.this);
@@ -139,6 +149,7 @@ public class MainActivity extends Activity implements OnClickListener {
     private void initEvents() {
         unpay_tab.setOnClickListener(this);
         pay_tab.setOnClickListener(this);
+        takeout_tab.setOnClickListener(this);
         btn_setting.setOnClickListener(this);
     }
 
@@ -155,12 +166,21 @@ public class MainActivity extends Activity implements OnClickListener {
                 setContent(0);
                 image_paid.setImageResource(R.mipmap.icon_paid);
                 image_unpay.setImageResource(R.mipmap.icon_unpay_unpick);
+                image_takeout.setImageResource(R.mipmap.icon_takeout_unpick);
                 break;
 
             case R.id.btn_unpay:
                 setContent(1);
                 image_paid.setImageResource(R.mipmap.icon_paid_unpick);
                 image_unpay.setImageResource(R.mipmap.icon_unpay);
+                image_takeout.setImageResource(R.mipmap.icon_takeout_unpick);
+                break;
+
+            case R.id.btn_takeout:
+                setContent(2);
+                image_paid.setImageResource(R.mipmap.icon_paid_unpick);
+                image_unpay.setImageResource(R.mipmap.icon_unpay_unpick);
+                image_takeout.setImageResource(R.mipmap.icon_takeout_picked);
                 break;
 
             case R.id.btn_setting:
@@ -168,6 +188,8 @@ public class MainActivity extends Activity implements OnClickListener {
                 intent.setClass( MainActivity.this, SettingActivity.class);      //运行另外一个类的活动
                 startActivityForResult(intent, 1);
                 break;
+
+
             default:
 
         }
@@ -178,11 +200,15 @@ public class MainActivity extends Activity implements OnClickListener {
 
         switch (item) {
             case 0:
-                transaction.hide(unpayFragment).show(payFragment).commit();
+                transaction.hide(unpayFragment).hide(takeoutFragment).show(payFragment).commit();
                 EventBus.getDefault().postSticky(new FlagEvent(true));
                 break;
             case 1:
-                transaction.hide(payFragment).show(unpayFragment).commit();
+                transaction.hide(payFragment).hide(takeoutFragment).show(unpayFragment).commit();
+                EventBus.getDefault().postSticky(new FlagEvent(true));
+                break;
+            case 2:
+                transaction.hide(unpayFragment).hide(payFragment).show(takeoutFragment).commit();
                 EventBus.getDefault().postSticky(new FlagEvent(true));
                 break;
             default:

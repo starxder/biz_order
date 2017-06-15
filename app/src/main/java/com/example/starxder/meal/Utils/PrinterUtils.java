@@ -46,7 +46,17 @@ public class PrinterUtils {
                         pos.printTextNewLine("----------------------------------------------");
                         pos.bold(false);
                         pos.printTextNewLine("订 单 号："+wxorder.getOutTradeNo());
-                        pos.printTextNewLine("桌  号："+wxorder.getTablecode()+"号桌");
+                        if (wxorder.getTakeout().equals("true")){
+                            String temp = wxorder.getTakeoutInfo();
+                            String[] details = temp.split(";");
+
+                            pos.printTextNewLine("姓  名："+details[0]);
+                            pos.printTextNewLine("电  话："+details[1]);
+                            pos.printTextNewLine("地  址："+details[2]);
+                        }else{
+                            pos.printTextNewLine("桌  号："+wxorder.getTablecode()+"号桌");
+                        }
+
                         if (wxorder.getIfpay().equals("true")){
                             pos.printTextNewLine("订单状态：已支付");
                         }else{

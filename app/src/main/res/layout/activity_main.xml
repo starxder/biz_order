@@ -85,6 +85,29 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/btn_takeout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn_unpay">
+
+                <ImageView
+                    android:id="@+id/image_btn_takeout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:src="@mipmap/icon_takeout_unpick" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="80dp"
+                    android:text="外卖"
+                    android:textColor="#fff" />
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:id="@+id/btn_setting"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
