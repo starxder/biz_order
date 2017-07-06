@@ -114,7 +114,7 @@ public class MealSettingAdapter extends BaseAdapter {
 
 
     private void request(Meal model,String b) {
-        String path = CommonUtils.BaseUrl + "/web-frame/meal/updateByParam.do?shopnum="+model.getShopnum()+"&mindex="+model.getMindex()+"&ifsoldout="+b+"&mealprice="+model.getMealprice()+"&delflag=false";
+        String path = CommonUtils.BaseUrl + "/web-frame/meal/updateByParam.do?shopnum="+model.getShopnum()+"&mindex="+model.getMindex()+"&ifsoldout="+b+"&mealprice="+model.getMealprice()+"&delflag=false" ;
         manager.synaGetByUrl(path);
     }
 }
