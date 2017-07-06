@@ -22,11 +22,11 @@ public class PrinterUtils {
         this.ip_address = ip_address;
         this.mPort = mPort;
         this.mealez = mealez;
-        this.wxorder =wxorder;
+        this.wxorder = wxorder;
     }
 
     public boolean print() {
-        if(!ip_address.equals("")){
+        if (!ip_address.equals("")) {
             new Thread() {
                 @Override
                 public void run() {
@@ -45,23 +45,30 @@ public class PrinterUtils {
                         pos.printLocation(0);
                         pos.printTextNewLine("----------------------------------------------");
                         pos.bold(false);
-                        pos.printTextNewLine("订 单 号："+wxorder.getOutTradeNo());
-                        if (wxorder.getTakeout().equals("true")){
+                        pos.printTextNewLine("订 单 号：" + wxorder.getOutTradeNo());
+                        if (wxorder.getTakeout().equals("true")) {
                             String temp = wxorder.getTakeoutInfo();
                             String[] details = temp.split(";");
 
-                            pos.printTextNewLine("姓  名："+details[0]);
-                            pos.printTextNewLine("电  话："+details[1]);
-                            pos.printTextNewLine("地  址："+details[2]);
-                        }else{
-                            pos.printTextNewLine("桌  号："+wxorder.getTablecode()+"号桌");
+                            pos.printTextNewLine("姓  名：" + details[0]);
+                            pos.printTextNewLine("电  话：" + details[1]);
+                            pos.printTextNewLine("地  址：" + details[2]);
+                        } else {
+                            pos.printTextNewLine("桌  号：" + wxorder.getTablecode() + "号桌");
                         }
 
-                        if (wxorder.getIfpay().equals("true")){
+                        if (wxorder.getIfpay().equals("true")) {
                             pos.printTextNewLine("订单状态：已支付");
-                        }else{
+                        } else {
                             pos.printTextNewLine("订单状态：未支付");
                         }
+
+                        if (wxorder.getRemark() == null||wxorder.getRemark().equals("undefined")) {
+                            pos.printTextNewLine("备注：无");
+                        } else {
+                            pos.printTextNewLine("备注：" + wxorder.getRemark());
+                        }
+
                         pos.printLine(2);
 
                         pos.printText("菜品");
@@ -81,14 +88,42 @@ public class PrinterUtils {
                             pos.printText("         ");
                             pos.printLocation(99, 1);
                             pos.printWordSpace(1);
-                            pos.printText(meals.getMealNum()+"");
+                            pos.printText(meals.getMealNum() + "");
                             pos.printWordSpace(3);
-                            pos.printText(meals.getMealprice()+"元");
+                            pos.printText(meals.getMealprice() + "元");
                         }
 
                         pos.printTextNewLine("----------------------------------------------");
-                        pos.printTextNewLine("                                总计"+wxorder.getTotalFee()+"元");
-                        pos.printLocation(1);
+
+                       if ((!wxorder.getFavorFee().equals("0"))&&(!wxorder.getFavorFee().equals(""))&&(wxorder.getFavorFee() != null)) {
+                            pos.printTextNewLine("");
+                            pos.printLocation(20, 1);
+                            pos.printText("");
+                            pos.printLocation(99, 1);
+                            pos.printWordSpace(1);
+                            pos.printText("原价");
+                            pos.printWordSpace(3);
+                            pos.printText(wxorder.getOriginFee() + "元");
+
+                            pos.printTextNewLine("");
+                            pos.printLocation(20, 1);
+                            pos.printText("");
+                            pos.printLocation(99, 1);
+                            pos.printWordSpace(1);
+                            pos.printText("优惠");
+                            pos.printWordSpace(3);
+                            pos.printText(wxorder.getFavorFee() + "元");
+                        }
+
+                        pos.printTextNewLine("");
+                        pos.printLocation(20, 1);
+                        pos.printText("");
+                        pos.printLocation(99, 1);
+                        pos.printWordSpace(1);
+                        pos.printText("总计");
+                        pos.printWordSpace(3);
+                        pos.printText(wxorder.getTotalFee() + "元");
+
                         pos.printLine(2);
 
 //                    long divider = 2000;
@@ -148,7 +183,7 @@ public class PrinterUtils {
                 }
             }.start();
         }
-        return  true;
+        return true;
     }
 
 }

@@ -79,7 +79,7 @@ public class MealDao {
         return meals;
     }
 
-    // 根据loginName取出用户信息
+    // 根据mealid取出用户信息
     public Meal queryBymealid(String mealid) {
         List<Meal> list = null;
         try {

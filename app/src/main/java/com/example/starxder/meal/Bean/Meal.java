@@ -34,8 +34,29 @@ public class Meal {
 	
 	@DatabaseField(columnName ="shopnum")
     private String shopnum;
-	
-	
+
+	@DatabaseField(columnName ="ifsoldout")
+	private String ifsoldout;
+
+	@DatabaseField(columnName ="mindex")
+	private String mindex;
+
+	public String getMindex() {
+		return mindex;
+	}
+
+	public void setMindex(String mindex) {
+		this.mindex = mindex;
+	}
+
+	public String getIfsoldout() {
+		return ifsoldout;
+	}
+
+	public void setIfsoldout(String ifsoldout) {
+		this.ifsoldout = ifsoldout;
+	}
+
 	public int getMealid() {
 		return mealid;
 	}

@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.starxder.meal.Activity.MainActivity;
 import com.example.starxder.meal.Bean.Wxorder;
 import com.example.starxder.meal.Event.FlagEvent;
+import com.example.starxder.meal.Event.PaystyleEvent;
 import com.example.starxder.meal.R;
 
 import org.greenrobot.eventbus.EventBus;
@@ -32,7 +33,7 @@ import okhttp3.Response;
 
 public class PaystyleDialog extends Dialog {
 
-    RelativeLayout btn_alipay,btn_card,btn_cash;
+    RelativeLayout btn_wechat,btn_alipay,btn_card,btn_cash;
     Wxorder wxorder;
     Context context;
 
@@ -61,11 +62,18 @@ public class PaystyleDialog extends Dialog {
 
 
     private void initView() {
+        btn_wechat = (RelativeLayout)findViewById(R.id.btn_wechat);
         btn_alipay = (RelativeLayout)findViewById(R.id.btn_alipay);
         btn_cash = (RelativeLayout)findViewById(R.id.btn_cash);
         btn_card = (RelativeLayout)findViewById(R.id.btn_card);
     }
     private void initEvent() {
+        btn_wechat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                request("http://www.jiatuokeji.com/web-frame/wxorder/updateByCode.do?outTradeNo="+wxorder.getOutTradeNo()+"&payStyle=wx&ifpay=true");
+            }
+        });
         btn_alipay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,6 +115,7 @@ public class PaystyleDialog extends Dialog {
             }
             @Override
             public void onResponse(Call call, Response response) throws IOException {
+                EventBus.getDefault().postSticky(new PaystyleEvent(true,wxorder.getOutTradeNo()));
                 EventBus.getDefault().postSticky(new FlagEvent(true));
 
             }

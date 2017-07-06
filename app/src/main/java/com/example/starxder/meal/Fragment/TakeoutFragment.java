@@ -40,7 +40,7 @@ import static android.content.ContentValues.TAG;
 
 public class TakeoutFragment extends Fragment {
 
-    List<Wxorder> pay_list = null;
+    List<Wxorder> takeout_list = null;
     CommonPayAdapter adapter;
     ListView listview;
     String shopNum;
@@ -50,13 +50,13 @@ public class TakeoutFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.unpay_fragment, container, false);
-        pay_list = new ArrayList<Wxorder>();
+        takeout_list = new ArrayList<Wxorder>();
         listview = (ListView) view.findViewById(R.id.unpay_orderlist);
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                EventBus.getDefault().post(new PayEvent(pay_list.get(i), i + ""));
+                EventBus.getDefault().post(new PayEvent(takeout_list.get(i), i + ""));
             }
         });
         //注册EventBus
@@ -118,8 +118,8 @@ public class TakeoutFragment extends Fragment {
                     error = jsonObject.getString("error");
                     result = jsonObject.getString("result");
                     if (error.equals("")) {
-                        pay_list = GsonUtils.getWxOrderByGson(result);
-                        adapter = new CommonPayAdapter(getActivity(), pay_list);
+                        takeout_list = GsonUtils.getWxOrderByGson(result);
+                        adapter = new CommonPayAdapter(getActivity(), takeout_list);
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {

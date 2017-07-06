@@ -12,7 +12,6 @@ public class PayEvent {
     private String ifpay;
 
     public PayEvent(Wxorder wxorder, String ifpay) {
-
         this.wxorder = wxorder;
         this.ifpay = ifpay;
     }

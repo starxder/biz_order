@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
     <RelativeLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:background="@mipmap/side_bg">
 
     </RelativeLayout>
 
+
     <RelativeLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="8">
+        android:layout_height="match_parent"
+        android:layout_weight="10"
+        android:background="#3357c4c7">
+
 
         <TextView
             android:id="@+id/btn_delete"
@@ -22,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:background="@mipmap/squre_circle_red"
             android:gravity="center"
             android:text="删除"
@@ -38,6 +42,13 @@
             android:textSize="24dp" />
 
         <TextView
+            android:id="@+id/centerH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="" />
+
+        <TextView
             android:id="@+id/orderdetail_ordercode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,91 +60,123 @@
             android:id="@+id/meal_list"
             android:layout_width="match_parent"
             android:layout_height="270dp"
-            android:layout_marginTop="150dp"
-            >
+            android:layout_marginTop="150dp">
 
         </ListView>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/back_detail"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true">
+            android:layout_below="@id/meal_list"
+            android:layout_centerHorizontal="true"
+            android:text="" />
 
-            <TextView
-                android:id="@+id/orderdetail_preprice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="450dp"
-                android:text="" />
+        <ListView
+            android:id="@+id/backmeal_list"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/back_detail"></ListView>
 
-            <TextView
-                android:id="@+id/orderdetail_discount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="470dp"
-                android:text="" />
 
-            <TextView
-                android:id="@+id/orderdetail_totalFee"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="490dp"
-                android:text="" />
+        <TextView
+            android:id="@+id/orderdetail_preprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/backmeal_list"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="2dp"
+            android:text="" />
 
-            <TextView
-                android:id="@+id/orderdetail_paystate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="530dp"
-                android:text="" />
+        <TextView
+            android:id="@+id/backdetail_backfee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/orderdetail_preprice"
+            android:layout_alignLeft="@+id/centerH"
+            android:text="" />
 
-            <TextView
-                android:id="@+id/orderdetail_paytime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="550dp"
-                android:text="" />
-        </RelativeLayout>
+        <TextView
+            android:id="@+id/orderdetail_discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/orderdetail_preprice"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="2dp"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/backdetail_turnover"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/orderdetail_discount"
+            android:layout_alignLeft="@+id/centerH"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/orderdetail_totalFee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/orderdetail_discount"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="2dp"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/orderdetail_remark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/orderdetail_totalFee"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="2dp"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/orderdetail_paystate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/orderdetail_remark"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="2dp"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/orderdetail_paytime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/orderdetail_paystate"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="2dp"
+            android:text="" />
+
 
         <TextView
             android:id="@+id/btn_print"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/orderdetail_paytime"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:layout_marginTop="590dp"
+            android:layout_marginTop="5dp"
             android:background="@mipmap/squre_circle_blue"
             android:gravity="center"
             android:text="出票"
             android:textColor="#fff" />
 
         <TextView
-            android:visibility="invisible"
             android:id="@+id/btn_paystyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/btn_print"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:layout_marginTop="650dp"
+            android:layout_marginTop="10dp"
             android:background="@mipmap/squre_circle_blue"
             android:gravity="center"
             android:text="选择付款方式"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            android:visibility="invisible" />
 
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
-        android:background="@mipmap/side_bg">
 
     </RelativeLayout>
 

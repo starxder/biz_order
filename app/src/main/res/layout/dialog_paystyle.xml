@@ -1,91 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="260dp"
-    android:layout_height="255dp"
-    android:background="#eee">
+    android:layout_width="260dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/stroke_1"
+    android:orientation="vertical">
+
     <TextView
-        android:layout_marginTop="5dp"
-        android:background="#fff"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
         android:text="请选择支付方式"
         android:textColor="#000"
-        android:textSize="24dp"
-        android:gravity="center"/>
+        android:textSize="24dp" />
+
     <RelativeLayout
-        android:background="#fff"
-        android:layout_marginTop="5dp"
+        android:id="@+id/btn_wechat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp">
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:src="@mipmap/icon_weichat" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="25dp"
+            android:text="微信支付"
+            android:textColor="#000"
+            android:textSize="18dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/btn_alipay"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp">
+
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@mipmap/icon_alipay"
             android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="25dp" />
+            android:layout_marginLeft="25dp"
+            android:src="@mipmap/icon_alipay" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="支付宝"
-            android:textSize="18dp"
-            android:layout_marginRight="25dp"
-            android:textColor="#000"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            android:layout_marginRight="25dp"
+            android:text="支付宝"
+            android:textColor="#000"
+            android:textSize="18dp" />
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:background="#fff"
-        android:layout_marginTop="5dp"
         android:id="@+id/btn_cash"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp">
 
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@mipmap/icon_cash"
             android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="25dp" />
+            android:layout_marginLeft="25dp"
+            android:src="@mipmap/icon_cash" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="现金"
-            android:layout_marginRight="25dp"
-            android:textSize="18dp"
-            android:textColor="#000"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            android:layout_marginRight="25dp"
+            android:text="现金"
+            android:textColor="#000"
+            android:textSize="18dp" />
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:background="#fff"
-        android:layout_marginTop="5dp"
         android:id="@+id/btn_card"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:paddingBottom="15dp">
 
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@mipmap/icon_card"
             android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="25dp" />
+            android:layout_marginLeft="25dp"
+            android:src="@mipmap/icon_card" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="刷卡"
-            android:layout_marginRight="25dp"
-            android:textSize="18dp"
-            android:textColor="#000"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            android:layout_marginRight="25dp"
+            android:text="刷卡"
+            android:textColor="#000"
+            android:textSize="18dp" />
 
     </RelativeLayout>
 

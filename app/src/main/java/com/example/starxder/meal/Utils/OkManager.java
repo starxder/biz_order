@@ -51,7 +51,11 @@ public class OkManager {
                     manager = instance;
                 }
             }
+            //-----------------starxder--------------------
+        }if (manager!= null){
+            instance = manager;
         }
+        //-----------------starxder--------------------
         return instance;
     }
 

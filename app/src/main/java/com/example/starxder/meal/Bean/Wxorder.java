@@ -53,7 +53,9 @@ public class Wxorder {
 
     private String takeoutInfo; //name + phoneNumber + address
 
-    public Wxorder(String outTradeNo, String appid, String mchId, String nonceStr, String sign, String body, String detail, String totalFee, String spbillCreateIp, String notifyUrl, String tradeType, String ordertime, String tablecode, String openid, String ifpay, String paytime, String paystyle, String ifdeal, String dateflag, String shopnum, String favorFee, String originFee, String backDetail, String backFee, String takeout, String takeoutInfo) {
+    private String remark; //订单备注
+
+    public Wxorder(String outTradeNo, String appid, String mchId, String nonceStr, String sign, String body, String detail, String totalFee, String spbillCreateIp, String notifyUrl, String tradeType, String ordertime, String tablecode, String openid, String ifpay, String paytime, String paystyle, String ifdeal, String dateflag, String shopnum, String favorFee, String originFee, String backDetail, String backFee, String takeout, String takeoutInfo, String remark) {
         this.outTradeNo = outTradeNo;
         this.appid = appid;
         this.mchId = mchId;
@@ -80,6 +82,7 @@ public class Wxorder {
         this.backFee = backFee;
         this.takeout = takeout;
         this.takeoutInfo = takeoutInfo;
+        this.remark = remark;
     }
 
     public String getOutTradeNo() {
@@ -289,4 +292,13 @@ public class Wxorder {
     public void setTakeoutInfo(String takeoutInfo) {
         this.takeoutInfo = takeoutInfo;
     }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 }
+

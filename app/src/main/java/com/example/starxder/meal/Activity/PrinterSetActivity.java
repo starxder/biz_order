@@ -2,34 +2,48 @@ package com.example.starxder.meal.Activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.starxder.meal.Bean.Printer;
+import com.example.starxder.meal.Bean.User;
 import com.example.starxder.meal.Dao.PrinterDao;
+import com.example.starxder.meal.Dao.UserDao;
 import com.example.starxder.meal.R;
+import com.example.starxder.meal.Utils.CommonUtils;
+import com.example.starxder.meal.Utils.OkManager;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by Administrator on 2017/6/14.
  */
 
-public class SettingActivity extends Activity {
+public class PrinterSetActivity extends Activity {
     EditText edtip_1, edtip_2, edtip_3, edtip_4, edtip_5;
     EditText edtProt1, edtProt2, edtProt3, edtProt4, edtProt5;
+
+
+
     CheckBox cb1, cb2, cb3, cb4, cb5;
 
     PrinterDao printerDao;
+    private OkManager manager;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_setting);
+        setContentView(R.layout.activity_printer);
         initView();
         initEvent();
         initData();
@@ -37,7 +51,8 @@ public class SettingActivity extends Activity {
 
 
     private void initView() {
-        printerDao = new PrinterDao(SettingActivity.this);
+        printerDao = new PrinterDao(PrinterSetActivity.this);
+
         edtip_1 = (EditText) findViewById(R.id.printer1_ip);
         edtip_2 = (EditText) findViewById(R.id.printer2_ip);
         edtip_3 = (EditText) findViewById(R.id.printer3_ip);
@@ -48,11 +63,15 @@ public class SettingActivity extends Activity {
         edtProt3 = (EditText) findViewById(R.id.printer3_port);
         edtProt4 = (EditText) findViewById(R.id.printer4_port);
         edtProt5 = (EditText) findViewById(R.id.printer5_port);
+
         cb1 = (CheckBox) findViewById(R.id.printer1_cb);
         cb2 = (CheckBox) findViewById(R.id.printer2_cb);
         cb3 = (CheckBox) findViewById(R.id.printer3_cb);
         cb4 = (CheckBox) findViewById(R.id.printer4_cb);
         cb5 = (CheckBox) findViewById(R.id.printer5_cb);
+        manager = OkManager.getInstance();
+        Log.d("manager",manager.toString());
+
     }
 
 
@@ -143,10 +162,13 @@ public class SettingActivity extends Activity {
                     //取消选中
                     printerDao.delete(printerDao.queryById(5));
                 }
+
             }
         });
 
+
     }
+
 
     private void initData() {
         if (printerDao.queryById(1)!=null){
@@ -178,5 +200,14 @@ public class SettingActivity extends Activity {
             edtProt5.setText(printerDao.queryById(5).getProt());
             cb5.setChecked(Boolean.valueOf(printerDao.queryById(5).getChecked()).booleanValue());
         }
+    }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            finish();
+            return true;
+        }
+        return false;
     }
 }

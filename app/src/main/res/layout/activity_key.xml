@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/stroke_1"
+        android:orientation="vertical"
+        android:padding="25dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="25dp"
+            android:text="密码修改"
+            android:textSize="26dp"
+            android:textStyle="bold" />
+
+
+
+            <EditText
+                android:id="@+id/Username_re_Edt"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:hint="请输入用户名" />
+
+            <EditText
+                android:id="@+id/Password_re_Edt"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="请输入原密码" />
+
+
+
+
+            <EditText
+                android:id="@+id/Password_new_Edt"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="请输入新密码" />
+
+            <EditText
+                android:id="@+id/Password_new_Edt2"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="请再次输入新密码" />
+
+
+        <Button
+            android:id="@+id/submit_rePassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="确认修改" />
+    </LinearLayout>
+
+</LinearLayout>

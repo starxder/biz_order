@@ -40,7 +40,7 @@ import static android.content.ContentValues.TAG;
 
 public class PayFragment extends Fragment {
 
-    List<Wxorder> pay_list = null;
+    List<Wxorder> unpay_list = null;
     CommonPayAdapter adapter;
     ListView listview;
     String shopNum;
@@ -50,13 +50,13 @@ public class PayFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.pay_fragment, container, false);
-        pay_list = new ArrayList<Wxorder>();
+        unpay_list = new ArrayList<Wxorder>();
         listview = (ListView) view.findViewById(R.id.pay_orderlist);
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                EventBus.getDefault().post(new PayEvent(pay_list.get(i), i + ""));
+                EventBus.getDefault().post(new PayEvent(unpay_list.get(i), i + ""));
             }
         });
         //注册EventBus
@@ -81,6 +81,7 @@ public class PayFragment extends Fragment {
     public void onMessageEvent(FlagEvent flagEvent) {
         if (flagEvent != null) {
             if (flagEvent.getFlag()) {
+                //刷新
                 loadData(shopNum);
             }
         }
@@ -118,8 +119,8 @@ public class PayFragment extends Fragment {
                     error = jsonObject.getString("error");
                     result = jsonObject.getString("result");
                     if (error.equals("")) {
-                        pay_list = GsonUtils.getWxOrderByGson(result);
-                        adapter = new CommonPayAdapter(getActivity(), pay_list);
+                        unpay_list = GsonUtils.getWxOrderByGson(result);
+                        adapter = new CommonPayAdapter(getActivity(), unpay_list);
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {

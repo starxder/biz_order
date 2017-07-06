@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="160px"
+    android:layout_height="165px"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/grid_bg"
+    android:padding="10dp">
+
+    <ImageView
+        android:src="@mipmap/ic_launcher_round"
+        android:id="@+id/grid_image"
+        android:layout_width="100px"
+        android:layout_height="100px" />
+
+    <TextView
+        android:id="@+id/grid_text"
+        android:layout_marginTop="5dp"
+        android:textSize="15px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:text="图标"/>
+
+</LinearLayout>

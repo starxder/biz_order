@@ -5,9 +5,11 @@ import android.app.Fragment;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,21 +17,26 @@ import android.widget.Toast;
 import com.example.starxder.meal.Adapter.MealAdapter;
 import com.example.starxder.meal.Bean.Meal;
 import com.example.starxder.meal.Bean.MealEZ;
-import com.example.starxder.meal.Bean.Printer;
 import com.example.starxder.meal.Bean.Wxorder;
 import com.example.starxder.meal.Dao.MealDao;
 import com.example.starxder.meal.Dao.PrinterDao;
+import com.example.starxder.meal.Dialog.BackMealDialog;
 import com.example.starxder.meal.Dialog.PaystyleDialog;
+import com.example.starxder.meal.Event.BackmealEvent;
 import com.example.starxder.meal.Event.FlagEvent;
 import com.example.starxder.meal.Event.PayEvent;
+import com.example.starxder.meal.Event.PaystyleEvent;
 import com.example.starxder.meal.R;
 import com.example.starxder.meal.Utils.CommonUtils;
+import com.example.starxder.meal.Utils.GsonUtils;
 import com.example.starxder.meal.Utils.OkManager;
 import com.example.starxder.meal.Utils.PrinterUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -54,27 +61,37 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
     TextView tv_totalFee;
     TextView tv_paystate;
     TextView tv_paytime;
+    TextView tv_remark;
+    TextView tv_back_detail;
+    TextView tv_back_fee;
+    TextView tv_turnover;
     List<MealEZ> meallist;
+    List<MealEZ> backmeallist;
     ListView listview;
+    ListView backlistview;
     MealAdapter adapter;
+    MealAdapter backadapter;
     TextView btn_delete;
     TextView btn_paystyle;
     TextView btn_print;
     OkManager manager;
     Wxorder wxorder;
-    PaystyleDialog dialog;
+    PaystyleDialog paystyleDialog;
+    BackMealDialog backMealDialog;
+    private List<Wxorder> nowList;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.orderdetail_fragment, container, false);
-        listview = (ListView) view.findViewById(R.id.meal_list);
         initView(view);
         EventBus.getDefault().register(this);
         return view;
     }
 
     private void initView(View view) {
+        listview = (ListView) view.findViewById(R.id.meal_list);
+        backlistview = (ListView) view.findViewById(R.id.backmeal_list);
         tv_tablenum = (TextView) view.findViewById(R.id.orderdetail_tablenum);
         tv_ordercode = (TextView) view.findViewById(R.id.orderdetail_ordercode);
         tv_preprice = (TextView) view.findViewById(R.id.orderdetail_preprice);
@@ -82,6 +99,10 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
         tv_totalFee = (TextView) view.findViewById(R.id.orderdetail_totalFee);
         tv_paystate = (TextView) view.findViewById(R.id.orderdetail_paystate);
         tv_paytime = (TextView) view.findViewById(R.id.orderdetail_paytime);
+        tv_remark = (TextView) view.findViewById(R.id.orderdetail_remark);
+        tv_back_detail = (TextView) view.findViewById(R.id.back_detail);
+        tv_back_fee = (TextView)view.findViewById(R.id.backdetail_backfee);
+        tv_turnover = (TextView)view.findViewById(R.id.backdetail_turnover);
         btn_delete = (TextView) view.findViewById(R.id.btn_delete);
         btn_delete.setOnClickListener(this);
         btn_print = (TextView) view.findViewById(R.id.btn_print);
@@ -99,7 +120,7 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
         if (payEvent != null) {
 
             wxorder = payEvent.getWxorder();
-            dialog = new PaystyleDialog(getActivity(), wxorder);
+            paystyleDialog = new PaystyleDialog(getActivity(), wxorder);
             setValue(wxorder);
             if (wxorder.getIfpay().equals("true")) {
                 btn_paystyle.setVisibility(View.INVISIBLE);
@@ -114,32 +135,37 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
     }
 
     private void setValue(Wxorder wxorder) {
+        float faverfee = 0;
         tv_tablenum.setText("桌号：" + wxorder.getTablecode());
         tv_ordercode.setText("订单号：" + wxorder.getOutTradeNo());
-        if (wxorder.getTakeout().equals("true")){
+        if (wxorder.getTakeout().equals("true")) {
             String temp = wxorder.getTakeoutInfo();
             String[] details = temp.split(";");
 
-
-            tv_tablenum.setText("姓名：" + details[0]+"   "+"电话："+details[1]);
+            tv_tablenum.setText("姓名：" + details[0] + "   " + "电话：" + details[1]);
             tv_ordercode.setText("地址：" + details[2]);
         }
 
 
-        setListView(wxorder);
-        if (wxorder.getOriginFee().equals("")) {
-            tv_preprice.setText("原价：" + wxorder.getTotalFee() + "元");
-        } else {
-            tv_preprice.setText("原价：" + wxorder.getOriginFee() + "元");
-        }
+        tv_preprice.setText("原价：" + wxorder.getOriginFee()+ "元");
 
-        if (wxorder.getFavorFee().equals("")) {
+
+        if (wxorder.getFavorFee().equals("") || wxorder.getFavorFee().equals("0")) {
+            faverfee = 0;
             tv_discount.setText("优惠：" + "暂无优惠");
         } else {
+            faverfee = Float.valueOf(wxorder.getFavorFee());
             tv_discount.setText("优惠：" + wxorder.getFavorFee() + "元");
         }
 
-        tv_totalFee.setText("应付：" + wxorder.getTotalFee() + "元");
+        tv_totalFee.setText("应付：" + (Float.valueOf(wxorder.getOriginFee()) - faverfee) + "元");
+
+        if (wxorder.getRemark() == null || wxorder.getRemark().equals("undefined")) {
+            tv_remark.setText("备注：无");
+        } else {
+            tv_remark.setText("备注：" + wxorder.getRemark());
+        }
+
 
         switch (wxorder.getPaystyle()) {
             case "wx":
@@ -170,16 +196,20 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
         }
 
 
+
+        setListView(wxorder);
+        setBackListView(wxorder,faverfee);
+
     }
 
-    private void setListView(Wxorder wxorder) {
+    private void setListView(final Wxorder wxorder) {
         //在这里根据wxorder.getDetail获取菜ID和数量，在数据库里查询对应的名称和价格
         String temp = wxorder.getDetail();
         String[] details = temp.split(";");
         String[] details_item;
         int length = details.length;
-        int[] mealids = new int[length];
-        int[] mealNums = new int[length];
+        final int[] mealids = new int[length];
+        final int[] mealNums = new int[length];
         for (int i = 0; i < length; i++) {
             details_item = details[i].split(",");
             mealids[i] = Integer.parseInt(details_item[0]);
@@ -206,6 +236,66 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
         adapter = new MealAdapter(meallist, getActivity());
         listview.setAdapter(adapter);
         //meallist 通过adapter绑定到ListView
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                int mealid = mealids[i];
+                int mealnum = mealNums[i];
+                backMealDialog = new BackMealDialog(getActivity(), wxorder, mealid, mealnum);
+                backMealDialog.show();
+            }
+        });
+    }
+
+    private void setBackListView(final Wxorder wxorder,float f) {
+        //在这里根据wxorder.getDetail获取菜ID和数量，在数据库里查询对应的名称和价格
+        String temp = wxorder.getBackDetail();
+        if (temp == null) {
+            tv_back_detail.setText("");
+            tv_back_fee.setText("");
+            tv_turnover.setText("");
+
+            backmeallist = new ArrayList<MealEZ>();
+            backadapter = new MealAdapter(backmeallist, getActivity());
+            backlistview.setAdapter(backadapter);
+
+        } else {
+            tv_back_detail.setText("退菜详情");
+            tv_back_fee.setText("退款："+wxorder.getBackFee());
+            tv_turnover.setText("实际消费："+(Float.valueOf(wxorder.getOriginFee()) - f - Float.valueOf(wxorder.getBackFee())));
+
+            String[] details = temp.split(";");
+            String[] details_item;
+            int length = details.length;
+            final int[] mealids = new int[length];
+            final int[] mealNums = new int[length];
+            for (int i = 0; i < length; i++) {
+                details_item = details[i].split(",");
+                mealids[i] = Integer.parseInt(details_item[0]);
+                mealNums[i] = Integer.parseInt(details_item[1]);
+            }
+
+            MealDao dao = new MealDao(getActivity());
+            String backdetail = wxorder.getDetail();
+            backmeallist = new ArrayList<MealEZ>();
+            Meal meal;
+            MealEZ mealEZ;
+            float mealprice;
+            String mealName;
+            int mealNum;
+            for (int i = 0; i < length; i++) {
+                meal = dao.queryBymealid(mealids[i] + "");
+                mealprice = Float.valueOf(meal.getMealprice());
+                mealName = meal.getMealname();
+                mealNum = mealNums[i];
+                mealEZ = new MealEZ(mealprice, mealName, mealNum);
+                backmeallist.add(mealEZ);
+            }
+            //得到meallist
+            backadapter = new MealAdapter(backmeallist, getActivity());
+            backlistview.setAdapter(backadapter);
+            //meallist 通过adapter绑定到ListView
+        }
     }
 
 
@@ -264,7 +354,7 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
                 break;
 
             case R.id.btn_paystyle:
-                dialog.show();
+                paystyleDialog.show();
                 break;
             default:
         }
@@ -377,12 +467,60 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
-    public void onMessageEvent(FlagEvent flagEvent) {
-        if (flagEvent != null) {
-            if (flagEvent.getFlag()) {
-                dialog.cancel();
+    public void onMessageEvent(PaystyleEvent paystyleEvent) {
+        if (paystyleEvent != null) {
+            if (paystyleEvent.getFlag()) {
+                paystyleDialog.cancel();
+                Wxorder wxorder = requestjson(paystyleEvent.getOutTradeNo());
+                EventBus.getDefault().post(new PayEvent(wxorder, ""));
             }
         }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void onMessageEvent(BackmealEvent backmealEvent) {
+        if (backmealEvent != null) {
+            if (backmealEvent.getFlag()) {
+                backMealDialog.cancel();
+                requestjson(backmealEvent.getOutTradeNo());
+            }
+        }
+    }
+
+    private Wxorder requestjson(String s) {
+
+        String path = CommonUtils.BaseUrl + "/web-frame/wxorder/queryByNo.do?outTradeNo=" + s;
+        //登陆同步用户数据
+        manager.asyncJsonStringByURL(path, new OkManager.Fun1() {
+            @Override
+            public void onResponse(String response) {
+                Log.i("LoginActivity", response);   //获取JSON字符串
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String error = jsonObject.getString("error");
+                    String result = jsonObject.getString("result");
+                    if (error.equals("")) {
+                        nowList = GsonUtils.getWxOrderByGson(result);
+                    } else {
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                setValue(nowList.get(0));
+            }
+
+            @Override
+            public void onFailure(String result) {
+                Toast.makeText(getActivity(), "网络连接失败", Toast.LENGTH_SHORT).show();
+            }
+        });
+        return nowList.get(0);
+    }
+
+    public static String format(float value) {
+
+        return String.format("%.2f", value).toString();
     }
 
 }

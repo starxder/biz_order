@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.starxder.meal.Bean.Meal;
 import com.example.starxder.meal.Bean.Printer;
+import com.example.starxder.meal.Bean.Setting;
 import com.example.starxder.meal.Bean.User;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
@@ -78,6 +79,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.createTable(connectionSource, User.class);
             TableUtils.createTable(connectionSource, Meal.class);
             TableUtils.createTable(connectionSource, Printer.class);
+            TableUtils.createTable(connectionSource, Setting.class);
             int i =1;
 
         } catch (SQLException e) {
@@ -91,6 +93,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.dropTable(connectionSource, User.class, true);
             TableUtils.dropTable(connectionSource, Meal.class, true);
             TableUtils.dropTable(connectionSource, Printer.class,true);
+            TableUtils.dropTable(connectionSource, Setting.class,true);
 
             onCreate(database, connectionSource);
         } catch (SQLException e) {
