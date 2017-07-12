@@ -194,7 +194,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                     if (error.equals("")) {
                         userList = GsonUtils.getUserByGson("[" + result + "]");
                         Log.d(TAG, userList.toString());
-
+                        userDao.deleteAll();
                         for (User user : userList) {
                             userDao.insert(user);
                         }

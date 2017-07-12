@@ -6,6 +6,7 @@ package com.example.starxder.meal.Dao;
 
 import android.content.Context;
 
+import com.example.starxder.meal.Bean.Meal;
 import com.example.starxder.meal.Bean.User;
 import com.example.starxder.meal.Database.DatabaseHelper;
 import com.j256.ormlite.dao.Dao;
@@ -109,6 +110,13 @@ public class UserDao {
             return list.get(0);
         }catch (Exception e){
             return  null;
+        }
+    }
+    // 删除全部信息
+    public void deleteAll() throws SQLException {
+        List<User> list =  queryForAll();
+        for(User user :list){
+            delete(user);
         }
     }
 }

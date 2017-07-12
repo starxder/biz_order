@@ -69,7 +69,7 @@ public class MealSetActivity extends Activity{
 
     private void requestjson(String s) {
 
-        String path = CommonUtils.BaseUrl + "web-frame/meal/init.do?shopnum=" + s;
+        String path = CommonUtils.BaseUrl + "web-frame/meal/init.do?shopnum=" +s;
         //登陆同步用户数据
         manager.asyncJsonStringByURL(path, new OkManager.Fun1() {
             @Override

@@ -1,7 +1,6 @@
 package com.example.starxder.meal.Adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,18 +8,11 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.starxder.meal.Bean.Meal;
-import com.example.starxder.meal.Bean.Printer;
-import com.example.starxder.meal.Bean.Wxorder;
 import com.example.starxder.meal.R;
 import com.example.starxder.meal.Utils.CommonUtils;
-import com.example.starxder.meal.Utils.GsonUtils;
 import com.example.starxder.meal.Utils.OkManager;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
