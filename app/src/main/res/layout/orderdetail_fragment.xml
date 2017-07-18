@@ -85,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/backmeal_list"
             android:layout_marginLeft="60dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="1dp"
             android:text="" />
 
         <TextView
@@ -102,7 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/orderdetail_preprice"
             android:layout_marginLeft="60dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="1dp"
             android:text="" />
 
         <TextView
@@ -114,12 +114,21 @@
             android:text="" />
 
         <TextView
-            android:id="@+id/orderdetail_totalFee"
+            android:id="@+id/orderdetail_bonus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/orderdetail_discount"
             android:layout_marginLeft="60dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="1dp"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/orderdetail_totalFee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/orderdetail_bonus"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="1dp"
             android:text="" />
 
         <TextView
@@ -128,7 +137,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/orderdetail_totalFee"
             android:layout_marginLeft="60dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="1dp"
             android:text="" />
 
         <TextView
@@ -137,7 +146,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/orderdetail_remark"
             android:layout_marginLeft="60dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="1dp"
             android:text="" />
 
         <TextView
@@ -146,7 +155,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/orderdetail_paystate"
             android:layout_marginLeft="60dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="1dp"
             android:text="" />
 
 

@@ -57,12 +57,12 @@
             android:text="+"/>
     </LinearLayout>
 
-<Button
-    android:id="@+id/btn_backsubmit"
-    android:layout_marginTop="15dp"
-    android:layout_marginBottom="15dp"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="确定"/>
+    <Button
+        android:id="@+id/btn_backsubmit"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="确定"/>
 
 </LinearLayout>

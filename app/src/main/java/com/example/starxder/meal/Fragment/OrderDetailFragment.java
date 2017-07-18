@@ -58,6 +58,7 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
     TextView tv_ordercode;
     TextView tv_preprice;
     TextView tv_discount;
+    TextView tv_bonus;
     TextView tv_totalFee;
     TextView tv_paystate;
     TextView tv_paytime;
@@ -96,6 +97,7 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
         tv_ordercode = (TextView) view.findViewById(R.id.orderdetail_ordercode);
         tv_preprice = (TextView) view.findViewById(R.id.orderdetail_preprice);
         tv_discount = (TextView) view.findViewById(R.id.orderdetail_discount);
+        tv_bonus = (TextView)view.findViewById(R.id.orderdetail_bonus);
         tv_totalFee = (TextView) view.findViewById(R.id.orderdetail_totalFee);
         tv_paystate = (TextView) view.findViewById(R.id.orderdetail_paystate);
         tv_paytime = (TextView) view.findViewById(R.id.orderdetail_paytime);
@@ -136,6 +138,7 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
 
     private void setValue(Wxorder wxorder) {
         float faverfee = 0;
+        float bonus = 0;
         tv_tablenum.setText("桌号：" + wxorder.getTablecode());
         tv_ordercode.setText("订单号：" + wxorder.getOutTradeNo());
         if (wxorder.getTakeout().equals("true")) {
@@ -152,13 +155,21 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
 
         if (wxorder.getFavorFee().equals("") || wxorder.getFavorFee().equals("0")) {
             faverfee = 0;
-            tv_discount.setText("优惠：" + "暂无优惠");
+            tv_discount.setText("优惠券优惠：" + "无");
         } else {
             faverfee = Float.valueOf(wxorder.getFavorFee());
-            tv_discount.setText("优惠：" + wxorder.getFavorFee() + "元");
+            tv_discount.setText("优惠券优惠：" + wxorder.getFavorFee() + "元");
         }
 
-        tv_totalFee.setText("应付：" + (Float.valueOf(wxorder.getOriginFee()) - faverfee) + "元");
+        if (wxorder.getBonus().equals("") || wxorder.getBonus().equals("0")) {
+            bonus = 0;
+            tv_bonus.setText("会员卡积分：未使用积分");
+        } else {
+            bonus = Float.valueOf(wxorder.getBonus());
+            tv_bonus.setText("会员卡积分："+bonus/10+"元");
+        }
+
+        tv_totalFee.setText("应付：" + (Float.valueOf(wxorder.getOriginFee()) - faverfee - (bonus/10)) + "元");
 
         if (wxorder.getRemark() == null || wxorder.getRemark().equals("undefined")) {
             tv_remark.setText("备注：无");
@@ -262,7 +273,7 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
         } else {
             tv_back_detail.setText("退菜详情");
             tv_back_fee.setText("退款："+wxorder.getBackFee());
-            tv_turnover.setText("实际消费："+(Float.valueOf(wxorder.getOriginFee()) - f - Float.valueOf(wxorder.getBackFee())));
+            tv_turnover.setText("实际消费："+(Float.valueOf(wxorder.getTotalFee()) - Float.valueOf(wxorder.getBackFee())));
 
             String[] details = temp.split(";");
             String[] details_item;

@@ -81,7 +81,7 @@ public class SettingDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return setting;
+         return setting;
     }
 
     // 根据loginName取出用户信息

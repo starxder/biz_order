@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     tools:context="com.example.starxder.meal.Activity.MainActivity">
 
@@ -12,7 +13,7 @@
         android:layout_weight="2"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <android.support.percent.PercentRelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -20,29 +21,31 @@
 
             <ImageView
                 android:id="@+id/head_pic"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_centerInParent="true"
                 />
 
             <ImageView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_centerInParent="true"
                 android:src="@mipmap/headbg" />
 
-        </RelativeLayout>
+        </android.support.percent.PercentRelativeLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="4"
-            android:background="#57c4c7">
+            android:background="#57c4c7"
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:id="@+id/btn_paid"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
 
                 <ImageView
@@ -57,24 +60,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="80dp"
+                    android:layout_alignParentBottom="true"
                     android:text="已付款"
                     android:textColor="#fff" />
+
                 <ImageView
                     android:id="@+id/redPoint_paid"
-                    android:visibility="invisible"
-                    android:layout_alignTop="@id/image_btn_paid"
-                    android:layout_toRightOf="@id/image_btn_paid"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/image_btn_paid"
+                    android:layout_toRightOf="@id/image_btn_paid"
                     android:src="@drawable/redpoint"
-                    />
+                    android:visibility="invisible" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/btn_unpay"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:layout_below="@+id/btn_paid">
 
                 <ImageView
@@ -89,24 +93,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="80dp"
+                    android:layout_alignParentBottom="true"
                     android:text="未付款"
                     android:textColor="#fff" />
 
                 <ImageView
                     android:id="@+id/redPoint_unpay"
-                    android:visibility="invisible"
-                    android:layout_alignTop="@id/image_btn_unpay"
-                    android:layout_toRightOf="@id/image_btn_unpay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/redpoint"/>
+                    android:layout_alignTop="@id/image_btn_unpay"
+                    android:layout_toRightOf="@id/image_btn_unpay"
+                    android:src="@drawable/redpoint"
+                    android:visibility="invisible" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/btn_takeout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:layout_below="@+id/btn_unpay">
 
                 <ImageView
@@ -121,24 +126,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="80dp"
+                    android:layout_alignParentBottom="true"
                     android:text="外卖"
                     android:textColor="#fff" />
 
                 <ImageView
                     android:id="@+id/redPoint_takeout"
-                    android:layout_alignTop="@id/image_btn_takeout"
-                    android:layout_toRightOf="@id/image_btn_takeout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="invisible"
-                    android:src="@drawable/redpoint"/>
+                    android:layout_alignTop="@id/image_btn_takeout"
+                    android:layout_toRightOf="@id/image_btn_takeout"
+                    android:src="@drawable/redpoint"
+                    android:visibility="invisible" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/btn_refresh"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:layout_below="@+id/btn_takeout">
 
                 <ImageView
@@ -153,7 +159,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="80dp"
+                    android:layout_alignParentBottom="true"
                     android:text="刷新数据"
                     android:textColor="#fff" />
             </RelativeLayout>
@@ -161,7 +167,8 @@
             <RelativeLayout
                 android:id="@+id/btn_more"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="60dp">
 
@@ -176,12 +183,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="80dp"
+                    android:layout_alignParentBottom="true"
                     android:text="更多"
                     android:textColor="#fff" />
             </RelativeLayout>
 
-        </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout

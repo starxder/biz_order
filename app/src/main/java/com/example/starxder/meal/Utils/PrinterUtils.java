@@ -78,7 +78,7 @@ public class PrinterUtils {
                         pos.printWordSpace(1);
                         pos.printText("数量");
                         pos.printWordSpace(3);
-                        pos.printText("小计");
+                        pos.printText("单价");
                         pos.printTextNewLine("----------------------------------------------");
 
 
@@ -115,6 +115,18 @@ public class PrinterUtils {
                             pos.printText(wxorder.getFavorFee() + "元");
                         }
 
+                        if ((!wxorder.getBonus().equals("0"))&&(!wxorder.getBonus().equals(""))&&(wxorder.getBonus() != null)) {
+
+                            pos.printTextNewLine("");
+                            pos.printLocation(20, 1);
+                            pos.printText("");
+                            pos.printLocation(99, 1);
+                            pos.printWordSpace(1);
+                            pos.printText("积分抵扣");
+                            pos.printWordSpace(3);
+                            pos.printText(Float.valueOf(wxorder.getBonus())/10 + "元");
+                        }
+
                         pos.printTextNewLine("");
                         pos.printLocation(20, 1);
                         pos.printText("");
@@ -142,38 +154,11 @@ public class PrinterUtils {
 //                        e.printStackTrace();
 //                    }
 
-
-                        pos.closeIOAndSocket();
-                        pos = null;
-
-
-                    } catch (UnknownHostException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                }
-            }.start();
-
-
-            new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        pos = new Pos(ip_address, mPort, "GBK");
-                        //初始化打印机
-                        pos.initPos();
-
-//                    //打印二维码
-//                    pos.qrCode("http://blog.csdn.net/haovip123");
-
-
-                        //切纸
                         pos.feedAndCut();
-
                         pos.closeIOAndSocket();
                         pos = null;
+
+
                     } catch (UnknownHostException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
@@ -182,6 +167,33 @@ public class PrinterUtils {
 
                 }
             }.start();
+
+
+//            new Thread() {
+//                @Override
+//                public void run() {
+//                    try {
+//                        pos = new Pos(ip_address, mPort, "GBK");
+//                        //初始化打印机
+//                        pos.initPos();
+//
+////                    //打印二维码
+////                    pos.qrCode("http://blog.csdn.net/haovip123");
+//
+//
+//                        //切纸
+//                        pos.feedAndCut();
+//
+//                        pos.closeIOAndSocket();
+//                        pos = null;
+//                    } catch (UnknownHostException e) {
+//                        e.printStackTrace();
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//
+//                }
+//            }.start();
         }
         return true;
     }

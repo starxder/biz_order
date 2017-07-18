@@ -55,7 +55,9 @@ public class Wxorder {
 
     private String remark; //订单备注
 
-    public Wxorder(String outTradeNo, String appid, String mchId, String nonceStr, String sign, String body, String detail, String totalFee, String spbillCreateIp, String notifyUrl, String tradeType, String ordertime, String tablecode, String openid, String ifpay, String paytime, String paystyle, String ifdeal, String dateflag, String shopnum, String favorFee, String originFee, String backDetail, String backFee, String takeout, String takeoutInfo, String remark) {
+    private String bonus; //使用积分个数
+
+    public Wxorder(String outTradeNo, String appid, String mchId, String nonceStr, String sign, String body, String detail, String totalFee, String spbillCreateIp, String notifyUrl, String tradeType, String ordertime, String tablecode, String openid, String ifpay, String paytime, String paystyle, String ifdeal, String dateflag, String shopnum, String favorFee, String originFee, String backDetail, String backFee, String takeout, String takeoutInfo, String remark, String bonus) {
         this.outTradeNo = outTradeNo;
         this.appid = appid;
         this.mchId = mchId;
@@ -83,6 +85,7 @@ public class Wxorder {
         this.takeout = takeout;
         this.takeoutInfo = takeoutInfo;
         this.remark = remark;
+        this.bonus = bonus;
     }
 
     public String getOutTradeNo() {
@@ -299,6 +302,14 @@ public class Wxorder {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public String getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(String bonus) {
+        this.bonus = bonus;
     }
 }
 

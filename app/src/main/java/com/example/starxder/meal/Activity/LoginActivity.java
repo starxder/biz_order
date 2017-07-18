@@ -159,9 +159,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                     Login();
                 }
             }
-            if (userDao.getFirstUser() == null) {
-
-            }
         }
     }
 

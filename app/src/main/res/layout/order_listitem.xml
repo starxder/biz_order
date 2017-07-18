@@ -1,58 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout android:background="#3357c4c7"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:padding="20dp"
-xmlns:android="http://schemas.android.com/apk/res/android">
-
-<TextView
-    android:textColor="#fff"
-    android:id="@+id/order_code"
-    android:layout_width="wrap_content"
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:background="@mipmap/squre_circle_blue"
-    android:padding="10dp"
-    android:text="订单号:123456789123456789" />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#3357c4c7"
+    android:padding="15sp">
 
-<TextView
-    android:textColor="#fff"
-    android:id="@+id/totalFee"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/order_code"
-    android:layout_marginTop="20dp"
-    android:gravity="center"
-    android:background="@mipmap/squre_circle_blue"
-    android:padding="10dp"
-    android:text="总价:20.00元" />
+    <TextView
+        android:id="@+id/order_code"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_widthPercent = "70%"
+        app:layout_heightPercent = "8%"
+        android:background="@mipmap/squre_circle_blue"
+        android:gravity="center"
+        android:maxLines="1"
+        android:padding="10dp"
+        android:text="订单号:123456789123456789"
+        android:textColor="#fff" />
 
-<TextView
-    android:textColor="#fff"
-    android:id="@+id/ifprint"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/order_code"
-    android:layout_marginLeft="20dp"
-    android:layout_marginTop="20dp"
-    android:layout_toRightOf="@id/totalFee"
-    android:background="@mipmap/squre_circle_blue"
-    android:padding="10dp"
-    android:gravity="center"
-    android:text="已出单" />
+    <TextView
+        android:id="@+id/totalFee"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_heightPercent = "8%"
+        android:layout_below="@id/order_code"
+        android:layout_marginTop="10dp"
+        android:background="@mipmap/squre_circle_blue"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="总价:20.00元"
+        android:textColor="#fff" />
 
-<TextView
-    android:id="@+id/table_code"
-    android:layout_width="150dp"
-    android:layout_height="105dp"
-    android:layout_alignParentRight="true"
-    android:layout_alignTop="@+id/order_code"
-    android:gravity="center"
-    android:textColor="#fff"
-    android:background="@mipmap/squre_circle_blue"
-    android:textSize="40dp"
-    android:text="A103" />
+    <TextView
+        android:id="@+id/ifprint"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_heightPercent = "8%"
+        android:layout_below="@id/order_code"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/totalFee"
+        android:background="@mipmap/squre_circle_blue"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="已出单"
+        android:textColor="#fff" />
+
+    <TextView
+        android:id="@+id/table_code"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_widthPercent = "25%"
+        app:layout_heightPercent = "18%"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/order_code"
+        android:background="@mipmap/squre_circle_blue"
+        android:gravity="center"
+        android:text="A103"
+        android:textColor="#fff"
+        android:textSize="20sp" />
 
 
-</RelativeLayout>
+</android.support.percent.PercentRelativeLayout>
