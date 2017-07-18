@@ -43,7 +43,7 @@ public class BackMealDialog extends Dialog implements View.OnClickListener {
     MealDao mealDao;
 
     public BackMealDialog(Context context, Wxorder wxorder, int i,int j) {
-        super(context, R.style.Theme_AppCompat_Dialog);
+        super(context, R.style.transparent_dialog);
         this.wxorder = wxorder;
         this.context = context;
         this.mealID = i;

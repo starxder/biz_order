@@ -1,6 +1,5 @@
 package com.example.starxder.meal.Dialog;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -8,9 +7,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
-import com.example.starxder.meal.Activity.MainActivity;
 import com.example.starxder.meal.Bean.Wxorder;
 import com.example.starxder.meal.Event.FlagEvent;
 import com.example.starxder.meal.Event.PaystyleEvent;
@@ -38,7 +35,7 @@ public class PaystyleDialog extends Dialog {
     Context context;
 
     public PaystyleDialog(Context context, Wxorder wxorder) {
-        super(context, R.style.Theme_AppCompat_Dialog);
+        super(context, R.style.transparent_dialog);
         this.wxorder = wxorder;
         this.context = context;
     }

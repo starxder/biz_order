@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.starxder.meal.Activity.MealSetActivity;
 import com.example.starxder.meal.Bean.Meal;
 import com.example.starxder.meal.Event.UpdateMealStatusEvent;
 import com.example.starxder.meal.R;
@@ -31,7 +30,7 @@ public class UpdateMealStatusDialog extends Dialog {
     OkManager manager;
 
     public UpdateMealStatusDialog(Context context, Meal meal) {
-        super(context, R.style.Theme_AppCompat_Dialog);
+        super(context, R.style.transparent_dialog);
         this.meal = meal;
     }
 
