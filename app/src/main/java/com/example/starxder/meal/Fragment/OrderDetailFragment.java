@@ -348,7 +348,7 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
                     upDateIfdeal();
                     PrinterUtils printerUtils;
                     PrinterDao printerDao = new PrinterDao(getActivity());
-                    for (int i = 0; i < 5; i++) {
+                    for (int i = 1; i <= 5; i++) {
                         if (printerDao.queryById(i) != null) {
                             if (printerDao.queryById(i).getChecked().equals("true")) {
                                 String ip = printerDao.queryById(i).getIpaddress();
