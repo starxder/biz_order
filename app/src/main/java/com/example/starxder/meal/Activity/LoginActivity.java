@@ -23,9 +23,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.starxder.meal.Bean.Dangkou;
 import com.example.starxder.meal.Bean.Meal;
 import com.example.starxder.meal.Bean.Setting;
 import com.example.starxder.meal.Bean.User;
+import com.example.starxder.meal.Dao.DangkouDao;
 import com.example.starxder.meal.Dao.MealDao;
 import com.example.starxder.meal.Dao.SettingDao;
 import com.example.starxder.meal.Dao.UserDao;
@@ -62,6 +64,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     SettingDao settingDao;
     Dialog loadingdialog;
     private List<User> userList;
+    private List<Dangkou> dangkouList;
 
 
     @Override
@@ -207,7 +210,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                             userDao.insert(user);
                         }
                         Toast.makeText(getApplicationContext(), "用户数据同步成功", Toast.LENGTH_SHORT).show();
-                        Synchronize();
+                        //同步菜品档口数据
+                        SynchronizeDangkou();
                     } else {
                         Toast.makeText(getApplicationContext(), "用户名或密码错误", Toast.LENGTH_SHORT).show();
                         Setting setting = new Setting(1, "false", "false");
@@ -233,7 +237,42 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         });
     }
 
+    private void SynchronizeDangkou() {
+        String synchronizePath = CommonUtils.BaseUrl + "web-frame/dictionary/getByCategory.do?category=" + userName+"_dangkou";
+        manager.asyncJsonStringByURL(synchronizePath, new OkManager.Fun1() {
+            @Override
+            public void onResponse(String response) {
+                Log.i("LoginActivity", response);   //获取JSON字符串
 
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String error = jsonObject.getString("error");
+                    String result = jsonObject.getString("result");
+                    if (error.equals("")) {
+                        dangkouList = GsonUtils.getDangkouByGson( result);
+                        DangkouDao dangkouDao = new DangkouDao(LoginActivity.this);
+                        try {
+                            dangkouDao.deleteAll();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                        for (Dangkou dangkou : dangkouList) {
+                            dangkouDao.insert(dangkou);
+                        }
+                    }
+                    Toast.makeText(getApplicationContext(), "档口数据同步成功", Toast.LENGTH_SHORT).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                Synchronize();
+            }
+
+            @Override
+            public void onFailure(String result) {
+                Toast.makeText(getApplicationContext(), "档口数据同步失败", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
     private void Synchronize() {
         final User user = userDao.queryByLoginName(userName);
         String synchronizePath = CommonUtils.BaseUrl + "web-frame/meal/init.do?shopnum=" + user.getShopnum();

@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.starxder.meal.Adapter.MealAdapter;
 import com.example.starxder.meal.Bean.Meal;
 import com.example.starxder.meal.Bean.MealEZ;
+import com.example.starxder.meal.Bean.Printer;
 import com.example.starxder.meal.Bean.Wxorder;
 import com.example.starxder.meal.Dao.MealDao;
 import com.example.starxder.meal.Dao.PrinterDao;
@@ -240,7 +241,7 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
             mealprice = Float.valueOf(meal.getMealprice());
             mealName = meal.getMealname();
             mealNum = mealNums[i];
-            mealEZ = new MealEZ(mealprice, mealName, mealNum);
+            mealEZ = new MealEZ(mealprice, mealName, mealNum,meal.getMealtype2(),meal.getMealtypename2());
             meallist.add(mealEZ);
         }
         //得到meallist
@@ -288,7 +289,7 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
 
             MealDao dao = new MealDao(getActivity());
             String backdetail = wxorder.getDetail();
-            backmeallist = new ArrayList<MealEZ>();
+            backmeallist = new ArrayList<>();
             Meal meal;
             MealEZ mealEZ;
             float mealprice;
@@ -299,7 +300,7 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
                 mealprice = Float.valueOf(meal.getMealprice());
                 mealName = meal.getMealname();
                 mealNum = mealNums[i];
-                mealEZ = new MealEZ(mealprice, mealName, mealNum);
+                mealEZ = new MealEZ(mealprice, mealName, mealNum,meal.getMealtype2(),meal.getMealtypename2());
                 backmeallist.add(mealEZ);
             }
             //得到meallist
@@ -348,13 +349,34 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
                     upDateIfdeal();
                     PrinterUtils printerUtils;
                     PrinterDao printerDao = new PrinterDao(getActivity());
-                    for (int i = 1; i <= 5; i++) {
-                        if (printerDao.queryById(i) != null) {
-                            if (printerDao.queryById(i).getChecked().equals("true")) {
-                                String ip = printerDao.queryById(i).getIpaddress();
-                                int prot = Integer.valueOf(printerDao.queryById(i).getProt());
-                                printerUtils = new PrinterUtils(ip, prot, meallist, wxorder);
-                                printerUtils.print();
+                    for (int i = 1; i <= 7; i++) {
+                        Printer printer = printerDao.queryById(i);
+                        if (printer != null) {
+                            if (printer.getChecked().equals("true")) {
+                                //如果打印全部
+                                if(printer.getDangkoukey().equals("0")){
+                                    String ip = printer.getIpaddress();
+                                    int port = Integer.valueOf(printer.getPort());
+                                    printerUtils = new PrinterUtils(ip, port, meallist, wxorder);
+                                    printerUtils.print();
+                                }else{
+                                    //获取档口索引key
+                                    String index = printer.getDangkoukey();
+                                    String indexName = printer.getDangkouname();
+                                    List<MealEZ> meallistIndex =  new ArrayList<>();
+                                    for(MealEZ meal:meallist){
+                                        if(meal.getMealtype2().equals(index)){
+                                            meallistIndex.add(meal);
+                                        }
+                                    }
+                                    if(meallistIndex.size()>0){
+                                        String ip = printer.getIpaddress();
+                                        int port = Integer.valueOf(printer.getPort());
+                                        printerUtils = new PrinterUtils(ip, port, meallistIndex, wxorder, indexName);
+                                        printerUtils.printIndex();
+                                    }
+                                }
+
                             }
                         }
 

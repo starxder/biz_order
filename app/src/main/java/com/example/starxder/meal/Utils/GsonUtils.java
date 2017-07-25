@@ -1,5 +1,6 @@
 package com.example.starxder.meal.Utils;
 
+import com.example.starxder.meal.Bean.Dangkou;
 import com.example.starxder.meal.Bean.Meal;
 import com.example.starxder.meal.Bean.User;
 import com.example.starxder.meal.Bean.Wxorder;
@@ -37,6 +38,15 @@ public class GsonUtils {
         List<User> list = new ArrayList<User>();
         Gson gson = new Gson();
         list = gson.fromJson(jsonString, new TypeToken<List<User>>() {
+
+        }.getType());
+        return list;
+    }
+
+    public static List<Dangkou> getDangkouByGson(String jsonString) {
+        List<Dangkou> list = new ArrayList<Dangkou>();
+        Gson gson = new Gson();
+        list = gson.fromJson(jsonString, new TypeToken<List<Dangkou>>() {
 
         }.getType());
         return list;

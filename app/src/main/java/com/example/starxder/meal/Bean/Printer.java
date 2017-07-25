@@ -14,8 +14,8 @@ public class Printer {
     @DatabaseField(columnName = "ipaddress")
     private String ipaddress;
 
-    @DatabaseField(columnName = "prot")
-    private String prot;
+    @DatabaseField(columnName = "port")
+    private String port;
 
     @DatabaseField(id = true)
     private int id;
@@ -23,15 +23,30 @@ public class Printer {
     @DatabaseField(columnName = "checked")
     private String checked;
 
+    @DatabaseField(columnName = "dangkoukey")
+    private String dangkoukey;
+
+    @DatabaseField(columnName = "dangkouname")
+    private String dangkouname;
+
     public Printer(){
 
     }
 
-    public Printer(String ipaddress, String prot, int id, String checked) {
+    public Printer(String ipaddress, String port, int id, String checked) {
         this.ipaddress = ipaddress;
-        this.prot = prot;
+        this.port = port;
         this.id = id;
         this.checked = checked;
+    }
+
+    public Printer(String ipaddress, String port, int id, String checked, String dangkouname, String dangkoukey) {
+        this.ipaddress = ipaddress;
+        this.port = port;
+        this.id = id;
+        this.checked = checked;
+        this.dangkouname = dangkouname;
+        this.dangkoukey = dangkoukey;
     }
 
     public String getIpaddress() {
@@ -42,12 +57,12 @@ public class Printer {
         this.ipaddress = ipaddress;
     }
 
-    public String getProt() {
-        return prot;
+    public String getPort() {
+        return port;
     }
 
-    public void setProt(String prot) {
-        this.prot = prot;
+    public void setPort(String port) {
+        this.port = port;
     }
 
     public int getId() {
@@ -64,5 +79,21 @@ public class Printer {
 
     public void setChecked(String checked) {
         this.checked = checked;
+    }
+
+    public String getDangkoukey() {
+        return dangkoukey;
+    }
+
+    public void setDangkoukey(String dangkoukey) {
+        this.dangkoukey = dangkoukey;
+    }
+
+    public String getDangkouname() {
+        return dangkouname;
+    }
+
+    public void setDangkouname(String dangkouname) {
+        this.dangkouname = dangkouname;
     }
 }
