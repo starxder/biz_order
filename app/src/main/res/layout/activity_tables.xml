@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.zhy.android.percent.support.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+
+        android:id="@+id/table_dalei"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="大类"
+        app:layout_heightPercent="3%w"
+        app:layout_marginPercent="5%w"
+        app:layout_widthPercent="5%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="小类"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="10%w"
+        app:layout_marginPercent="5%w"
+        app:layout_widthPercent="15%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="现金收入"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="10%w"
+        app:layout_marginTopPercent="8%w"
+        app:layout_widthPercent="15%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="银联卡"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="10%w"
+        app:layout_marginTopPercent="11%w"
+        app:layout_widthPercent="15%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="微信支付"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="10%w"
+        app:layout_marginTopPercent="14%w"
+        app:layout_widthPercent="15%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="支付宝支付"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="10%w"
+        app:layout_marginTopPercent="17%w"
+        app:layout_widthPercent="15%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="会员储值卡"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="10%w"
+        app:layout_marginTopPercent="20%w"
+        app:layout_widthPercent="15%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="其他支付方式"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="10%w"
+        app:layout_marginTopPercent="23%w"
+        app:layout_widthPercent="15%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="收入小计"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="5%w"
+        app:layout_marginTopPercent="26%w"
+        app:layout_widthPercent="20%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="本日发生"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="25%w"
+        app:layout_marginPercent="5%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="本月类计"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="35%w"
+        app:layout_marginPercent="5%w"
+        app:layout_widthPercent="10%w" />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="18%w"
+        app:layout_marginLeftPercent="5%w"
+        app:layout_marginTopPercent="8%w"
+        app:layout_widthPercent="5%w" />
+    
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:gravity="center"
+        android:text="营业收入"
+        app:layout_heightPercent="18%w"
+        app:layout_marginLeftPercent="7%w"
+        app:layout_marginTopPercent="8%w"
+        app:layout_widthPercent="1.2%w" />
+
+
+
+</com.zhy.android.percent.support.PercentRelativeLayout>

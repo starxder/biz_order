@@ -45,10 +45,9 @@ public class PrinterUtils {
                         pos.initPos();
 
 
-                        pos.bold(true);
                         pos.printTabSpace(2);
                         pos.printWordSpace(1);
-
+                        pos.bold(false);
                         pos.printText(wxorder.getBody());
 
                         pos.printLocation(0);
@@ -72,7 +71,7 @@ public class PrinterUtils {
                             pos.printTextNewLine("订单状态：未支付");
                         }
 
-                        if (wxorder.getRemark() == null||wxorder.getRemark().equals("undefined")) {
+                        if (wxorder.getRemark() == null || wxorder.getRemark().equals("undefined")) {
                             pos.printTextNewLine("备注：无");
                         } else {
                             pos.printTextNewLine("备注：" + wxorder.getRemark());
@@ -104,7 +103,7 @@ public class PrinterUtils {
 
                         pos.printTextNewLine("----------------------------------------------");
 
-                       if ((!wxorder.getFavorFee().equals("0"))&&(!wxorder.getFavorFee().equals(""))&&(wxorder.getFavorFee() != null)) {
+                        if ((!wxorder.getFavorFee().equals("0")) && (!wxorder.getFavorFee().equals("")) && (wxorder.getFavorFee() != null)) {
                             pos.printTextNewLine("");
                             pos.printLocation(20, 1);
                             pos.printText("");
@@ -124,7 +123,7 @@ public class PrinterUtils {
                             pos.printText(wxorder.getFavorFee() + "元");
                         }
 
-                        if ((!wxorder.getBonus().equals("0"))&&(!wxorder.getBonus().equals(""))&&(wxorder.getBonus() != null)) {
+                        if ((!wxorder.getBonus().equals("0")) && (!wxorder.getBonus().equals("")) && (wxorder.getBonus() != null)) {
 
                             pos.printTextNewLine("");
                             pos.printLocation(20, 1);
@@ -133,7 +132,7 @@ public class PrinterUtils {
                             pos.printWordSpace(1);
                             pos.printText("积分抵扣");
                             pos.printWordSpace(3);
-                            pos.printText(Float.valueOf(wxorder.getBonus())/10 + "元");
+                            pos.printText(Float.valueOf(wxorder.getBonus()) / 10 + "元");
                         }
 
                         pos.printTextNewLine("");
@@ -222,7 +221,6 @@ public class PrinterUtils {
                         pos.bold(true);
                         pos.printTabSpace(2);
                         pos.printWordSpace(1);
-
                         pos.printText(indexName);
 
                         pos.printLocation(0);
@@ -246,7 +244,7 @@ public class PrinterUtils {
                             pos.printTextNewLine("订单状态：未支付");
                         }
 
-                        if (wxorder.getRemark() == null||wxorder.getRemark().equals("undefined")) {
+                        if (wxorder.getRemark() == null || wxorder.getRemark().equals("undefined")) {
                             pos.printTextNewLine("备注：无");
                         } else {
                             pos.printTextNewLine("备注：" + wxorder.getRemark());
@@ -279,11 +277,6 @@ public class PrinterUtils {
                         pos.printTextNewLine("----------------------------------------------");
 
 
-
-
-
-
-
                         pos.printLine(2);
 
 
@@ -301,6 +294,15 @@ public class PrinterUtils {
                 }
             }.start();
 
+        }
+        return true;
+    }
+
+    public boolean printTest() {
+        try {
+            pos.printTest("00000001", 0b00000001);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return true;
     }

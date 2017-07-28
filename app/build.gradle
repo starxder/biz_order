@@ -32,5 +32,6 @@ dependencies {
     compile 'com.j256.ormlite:ormlite-android:5.0'
     compile 'com.j256.ormlite:ormlite-core:5.0'
     compile 'com.android.support:percent:25.3.1'
+    compile 'com.zhy:percent-support-extends:1.0.1'
     testCompile 'junit:junit:4.12'
 }

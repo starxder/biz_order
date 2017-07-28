@@ -247,13 +247,26 @@ public class Pos {
             writer.write(0x1B);
             writer.write(69);
             writer.write(0xF);
-            writer.flush();
+//            writer.flush();
         } else {
             //加粗
             writer.write(0x1B);
             writer.write(69);
             writer.write(0);
-            writer.flush();
+//            writer.flush();
         }
     }
+
+    protected void printTest(String text,int x) throws IOException {
+        //换行
+        writer.write("\n");
+        writer.write(x);
+        writer.flush();
+
+        String s = text;
+        byte[] content = s.getBytes("gbk");
+        socketOut.write(content);
+        socketOut.flush();
+    }
+
 }

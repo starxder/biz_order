@@ -211,7 +211,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                         }
                         Toast.makeText(getApplicationContext(), "用户数据同步成功", Toast.LENGTH_SHORT).show();
                         //同步菜品档口数据
-                        SynchronizeDangkou();
+                        SynchronizeDangkou(userList.get(0).getTabletype());
                     } else {
                         Toast.makeText(getApplicationContext(), "用户名或密码错误", Toast.LENGTH_SHORT).show();
                         Setting setting = new Setting(1, "false", "false");
@@ -237,8 +237,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         });
     }
 
-    private void SynchronizeDangkou() {
-        String synchronizePath = CommonUtils.BaseUrl + "web-frame/dictionary/getByCategory.do?category=" + userName+"_dangkou";
+    private void SynchronizeDangkou(String tabletype) {
+        String synchronizePath = CommonUtils.BaseUrl + "web-frame/dictionary/getByCategory.do?category=" + tabletype+"_dangkou";
         manager.asyncJsonStringByURL(synchronizePath, new OkManager.Fun1() {
             @Override
             public void onResponse(String response) {
@@ -280,7 +280,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             @Override
             public void onResponse(String response) {
                 Log.i("LoginActivity", response);   //获取JSON字符串
-                //                    JSONObject jsonObject = new JSONObject(response);
+ //                    JSONObject jsonObject = new JSONObject(response);
 //                    String error = jsonObject.getString("error");
 //                    String result = jsonObject.getString("result");
                 if (!response.equals("")) {

@@ -68,7 +68,9 @@ public class ToolsActivity extends Activity {
                         startActivityForResult(intent2, 1);
                         break;
                     case R.mipmap.icon_tables:
-
+                        Intent intent3 = new Intent();
+                        intent3.setClass(ToolsActivity.this, DataTableActivity.class);      //运行另外一个类的活动
+                        startActivityForResult(intent3, 1);
                         break;
 
                     default:

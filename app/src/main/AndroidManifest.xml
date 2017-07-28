@@ -70,6 +70,12 @@
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.TranslucentDecor"
             tools:targetApi="kitkat"></activity>
 
+        <activity
+            android:name=".Activity.DataTableActivity"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.TranslucentDecor"
+            tools:targetApi="kitkat"></activity>
+
 
     </application>
 

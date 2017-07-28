@@ -30,7 +30,7 @@ import okhttp3.Response;
 
 public class PaystyleDialog extends Dialog {
 
-    RelativeLayout btn_wechat,btn_alipay,btn_card,btn_cash;
+    RelativeLayout btn_wechat,btn_alipay,btn_card,btn_cash,btn_member,btn_other;
     Wxorder wxorder;
     Context context;
 
@@ -63,6 +63,9 @@ public class PaystyleDialog extends Dialog {
         btn_alipay = (RelativeLayout)findViewById(R.id.btn_alipay);
         btn_cash = (RelativeLayout)findViewById(R.id.btn_cash);
         btn_card = (RelativeLayout)findViewById(R.id.btn_card);
+        btn_member = (RelativeLayout)findViewById(R.id.btn_member);
+        btn_other = (RelativeLayout)findViewById(R.id.btn_other);
+
     }
     private void initEvent() {
         btn_wechat.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +92,18 @@ public class PaystyleDialog extends Dialog {
                 request("http://www.jiatuokeji.com/web-frame/wxorder/updateByCode.do?outTradeNo="+wxorder.getOutTradeNo()+"&payStyle=card&ifpay=true");
             }
         });
+        btn_member.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                request("http://www.jiatuokeji.com/web-frame/wxorder/updateByCode.do?outTradeNo="+wxorder.getOutTradeNo()+"&payStyle=member&ifpay=true");
+            }
+        });
+         btn_other.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 request("http://www.jiatuokeji.com/web-frame/wxorder/updateByCode.do?outTradeNo="+wxorder.getOutTradeNo()+"&payStyle=other&ifpay=true");
+             }
+         });
     }
 
     private void request(String path) {

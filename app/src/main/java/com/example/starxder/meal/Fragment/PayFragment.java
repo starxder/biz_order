@@ -56,7 +56,7 @@ public class PayFragment extends Fragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                EventBus.getDefault().post(new PayEvent(unpay_list.get(i), i + ""));
+                EventBus.getDefault().postSticky(new PayEvent(unpay_list.get(i), i + ""));
             }
         });
         //注册EventBus

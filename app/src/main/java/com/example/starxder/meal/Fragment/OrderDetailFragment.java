@@ -76,6 +76,8 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
     TextView btn_delete;
     TextView btn_paystyle;
     TextView btn_print;
+    TextView btn_counter;
+    TextView btn_account;
     OkManager manager;
     Wxorder wxorder;
     PaystyleDialog paystyleDialog;
@@ -110,6 +112,10 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
         btn_delete.setOnClickListener(this);
         btn_print = (TextView) view.findViewById(R.id.btn_print);
         btn_print.setOnClickListener(this);
+        btn_counter = (TextView)view.findViewById(R.id.btn_counter);
+        btn_counter.setOnClickListener(this);
+        btn_account = (TextView)view.findViewById(R.id.btn_account);
+        btn_account.setOnClickListener(this);
         btn_paystyle = (TextView) view.findViewById(R.id.btn_paystyle);
         btn_paystyle.setOnClickListener(this);
         manager = OkManager.getInstance();
@@ -127,13 +133,22 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
             setValue(wxorder);
             if (wxorder.getIfpay().equals("true")) {
                 btn_paystyle.setVisibility(View.INVISIBLE);
+                btn_account.setVisibility(View.VISIBLE);
             }
             if (wxorder.getIfpay().equals("false")) {
                 btn_paystyle.setVisibility(View.VISIBLE);
+                btn_account.setVisibility(View.INVISIBLE);
             }
         }
+        btn_delete.setVisibility(View.VISIBLE);
+        btn_print.setVisibility(View.VISIBLE);
         btn_print.setEnabled(true);
         btn_print.setTextColor(Color.argb(255, 255, 255, 255));
+        btn_counter.setVisibility(View.VISIBLE);
+        btn_counter.setEnabled(true);
+        btn_counter.setTextColor(Color.argb(255, 255, 255, 255));
+        btn_account.setEnabled(true);
+        btn_account.setTextColor(Color.argb(255, 255, 255, 255));
 
     }
 
@@ -191,6 +206,9 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
                 break;
             case "card":
                 tv_paystate.setText("支付状态：" + "刷卡支付");
+                break;
+            case"member":
+                tv_paystate.setText("支付状态：" + "会员卡支付");
                 break;
             case "other":
                 tv_paystate.setText("支付状态：" + "其他支付");
@@ -262,7 +280,7 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
     private void setBackListView(final Wxorder wxorder,float f) {
         //在这里根据wxorder.getDetail获取菜ID和数量，在数据库里查询对应的名称和价格
         String temp = wxorder.getBackDetail();
-        if (temp == null) {
+        if (temp == null|| temp== "") {
             tv_back_detail.setText("");
             tv_back_fee.setText("");
             tv_turnover.setText("");
@@ -344,6 +362,16 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
                 }
 
                 break;
+
+            case R.id.btn_counter:
+                Toast.makeText(getActivity(),"可以",Toast.LENGTH_LONG).show();
+                btn_counter.setEnabled(false);
+                btn_counter.setTextColor(Color.argb(55, 255, 255, 255));
+                PrinterUtils p1;
+                p1 = new PrinterUtils("192.168.0.231", 9100, meallist, wxorder);
+                p1.printTest();
+                break;
+
             case R.id.btn_print:
                 if (wxorder != null) {
                     upDateIfdeal();
@@ -384,6 +412,12 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
                     btn_print.setEnabled(false);
                     btn_print.setTextColor(Color.argb(55, 255, 255, 255));
                 }
+                break;
+
+            case R.id.btn_account:
+                Toast.makeText(getActivity(),"可以",Toast.LENGTH_LONG).show();
+                btn_account.setEnabled(false);
+                btn_account.setTextColor(Color.argb(55, 255, 255, 255));
                 break;
 
             case R.id.btn_paystyle:
@@ -552,7 +586,6 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
     }
 
     public static String format(float value) {
-
         return String.format("%.2f", value).toString();
     }
 
