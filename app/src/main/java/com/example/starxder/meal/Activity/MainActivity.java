@@ -278,7 +278,7 @@ public class MainActivity extends Activity implements OnClickListener {
     }
 
 
-    CountDownTimer cdt = new CountDownTimer(99999999, 20 * 1000) {
+    CountDownTimer cdt = new CountDownTimer(99999999, 60 * 1000) {
         @Override
         public void onTick(long l) {
             //刷新view

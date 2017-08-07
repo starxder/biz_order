@@ -190,7 +190,7 @@
                 android:layout_weight="1"
                 android:background="@mipmap/squre_circle_blue"
                 android:gravity="center"
-                android:text="出票"
+                android:text="全部出票"
                 android:textColor="#fff"
                 android:visibility="invisible" />
 

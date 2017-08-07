@@ -8,7 +8,7 @@ public class PayDetail {
     //支付宝
     String alipay;
     //会员卡
-    String merbercard;
+    String membercard;
     //刷卡
     String creditcard;
     //其他
@@ -38,12 +38,12 @@ public class PayDetail {
         this.alipay = alipay;
     }
 
-    public String getMerbercard() {
-        return merbercard;
+    public String getMembercard() {
+        return membercard;
     }
 
-    public void setMerbercard(String merbercard) {
-        this.merbercard = merbercard;
+    public void setMembercard(String membercard) {
+        this.membercard = membercard;
     }
 
     public String getCreditcard() {
@@ -61,5 +61,4 @@ public class PayDetail {
     public void setOtherpay(String otherpay) {
         this.otherpay = otherpay;
     }
-
 }

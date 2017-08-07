@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.android.percent.support.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,9 +10,8 @@
     <TextView
         android:id="@+id/order_code"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_widthPercent = "70%"
-        app:layout_heightPercent = "8%"
+        android:layout_height="wrap_content"
+        app:layout_widthPercent = "60%w"
         android:background="@mipmap/squre_circle_blue"
         android:gravity="center"
         android:maxLines="1"
@@ -23,8 +22,7 @@
     <TextView
         android:id="@+id/totalFee"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        app:layout_heightPercent = "8%"
+        android:layout_height="wrap_content"
         android:layout_below="@id/order_code"
         android:layout_marginTop="10dp"
         android:background="@mipmap/squre_circle_blue"
@@ -36,8 +34,7 @@
     <TextView
         android:id="@+id/ifprint"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        app:layout_heightPercent = "8%"
+        android:layout_height="wrap_content"
         android:layout_below="@id/order_code"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
@@ -52,8 +49,8 @@
         android:id="@+id/table_code"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_widthPercent = "25%"
-        app:layout_heightPercent = "18%"
+        app:layout_widthPercent = "25%w"
+        app:layout_heightPercent = "21%w"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/order_code"
         android:background="@mipmap/squre_circle_blue"
@@ -63,4 +60,4 @@
         android:textSize="20sp" />
 
 
-</android.support.percent.PercentRelativeLayout>
+</com.zhy.android.percent.support.PercentRelativeLayout>

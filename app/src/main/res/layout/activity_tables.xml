@@ -7,8 +7,6 @@
     android:orientation="vertical">
 
     <TextView
-
-        android:id="@+id/table_dalei"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_gravity="bottom|right"
@@ -16,7 +14,20 @@
         android:gravity="center"
         android:text="大类"
         app:layout_heightPercent="3%w"
-        app:layout_marginPercent="5%w"
+        app:layout_marginLeftPercent="5%w"
+        app:layout_marginTopPercent="5%w"
+        app:layout_widthPercent="5%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="大类"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="45%w"
+        app:layout_marginTopPercent="5%w"
         app:layout_widthPercent="5%w" />
 
     <TextView
@@ -28,7 +39,115 @@
         android:text="小类"
         app:layout_heightPercent="3%w"
         app:layout_marginLeftPercent="10%w"
-        app:layout_marginPercent="5%w"
+        app:layout_marginTopPercent="5%w"
+        app:layout_widthPercent="15%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="菜金收入"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="50%w"
+        app:layout_marginTopPercent="8%w"
+        app:layout_widthPercent="15%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="饮料收入"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="50%w"
+        app:layout_marginTopPercent="11%w"
+        app:layout_widthPercent="15%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="破损餐具"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="50%w"
+        app:layout_marginTopPercent="14%w"
+        app:layout_widthPercent="15%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="餐巾纸"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="50%w"
+        app:layout_marginTopPercent="17%w"
+        app:layout_widthPercent="15%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="打包盒"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="50%w"
+        app:layout_marginTopPercent="20%w"
+        app:layout_widthPercent="15%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="金额打折"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="50%w"
+        app:layout_marginTopPercent="26%w"
+        app:layout_widthPercent="15%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="其他优惠"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="50%w"
+        app:layout_marginTopPercent="29%w"
+        app:layout_widthPercent="15%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="现金退款"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="50%w"
+        app:layout_marginTopPercent="35%w"
+        app:layout_widthPercent="15%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="小类"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="50%w"
+        app:layout_marginTopPercent="5%w"
         app:layout_widthPercent="15%w" />
 
     <TextView
@@ -109,6 +228,42 @@
         android:layout_gravity="bottom|right"
         android:background="@drawable/tableline"
         android:gravity="center"
+        android:text="午餐收入（14：00前）"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="10%w"
+        app:layout_marginTopPercent="29%w"
+        app:layout_widthPercent="15%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="晚餐收入（14：00后）"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="10%w"
+        app:layout_marginTopPercent="32%w"
+        app:layout_widthPercent="15%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="外卖收入"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="10%w"
+        app:layout_marginTopPercent="35%w"
+        app:layout_widthPercent="15%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
         android:text="收入小计"
         app:layout_heightPercent="3%w"
         app:layout_marginLeftPercent="5%w"
@@ -121,11 +276,353 @@
         android:layout_gravity="bottom|right"
         android:background="@drawable/tableline"
         android:gravity="center"
+        android:text="收入小计"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="45%w"
+        app:layout_marginTopPercent="23%w"
+        app:layout_widthPercent="20%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="优惠小计"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="45%w"
+        app:layout_marginTopPercent="32%w"
+        app:layout_widthPercent="20%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="收入小计"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="5%w"
+        app:layout_marginTopPercent="38%w"
+        app:layout_widthPercent="20%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
         android:text="本日发生"
         app:layout_heightPercent="3%w"
         app:layout_marginLeftPercent="25%w"
-        app:layout_marginPercent="5%w"
+        app:layout_marginTopPercent="5%w"
         app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="本日发生"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="65%w"
+        app:layout_marginTopPercent="5%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_dishIncome_day"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="65%w"
+        app:layout_marginTopPercent="8%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_drinkIncome_day"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="65%w"
+        app:layout_marginTopPercent="11%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="65%w"
+        app:layout_marginTopPercent="14%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="65%w"
+        app:layout_marginTopPercent="17%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="65%w"
+        app:layout_marginTopPercent="20%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="65%w"
+        app:layout_marginTopPercent="23%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="65%w"
+        app:layout_marginTopPercent="23%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="65%w"
+        app:layout_marginTopPercent="23%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_faverfee_day"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="65%w"
+        app:layout_marginTopPercent="26%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="65%w"
+        app:layout_marginTopPercent="29%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="65%w"
+        app:layout_marginTopPercent="32%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_cashBackfee_day"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="65%w"
+        app:layout_marginTopPercent="35%w"
+        app:layout_widthPercent="10%w" />
+
+
+    <TextView
+        android:id="@+id/table_cash_day"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="25%w"
+        app:layout_marginTopPercent="8%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_Unionpaycard_day"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="25%w"
+        app:layout_marginTopPercent="11%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_wechat_day"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="25%w"
+        app:layout_marginTopPercent="14%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_alipay_day"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="25%w"
+        app:layout_marginTopPercent="17%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_member_day"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="25%w"
+        app:layout_marginTopPercent="20%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_other_day"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="25%w"
+        app:layout_marginTopPercent="23%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_paytypeTot_day"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="25%w"
+        app:layout_marginTopPercent="26%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_lunch_day"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="25%w"
+        app:layout_marginTopPercent="29%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_dinner_day"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="25%w"
+        app:layout_marginTopPercent="32%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_takeout_day"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="25%w"
+        app:layout_marginTopPercent="35%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_dealtypeTot_day"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="25%w"
+        app:layout_marginTopPercent="38%w"
+        app:layout_widthPercent="10%w" />
+
 
     <TextView
         android:layout_width="0dp"
@@ -136,8 +633,274 @@
         android:text="本月类计"
         app:layout_heightPercent="3%w"
         app:layout_marginLeftPercent="35%w"
-        app:layout_marginPercent="5%w"
+        app:layout_marginTopPercent="5%w"
         app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text="本月类计"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="75%w"
+        app:layout_marginTopPercent="5%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_dishIncome_month"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="75%w"
+        app:layout_marginTopPercent="8%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_drinkIncome_month"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="75%w"
+        app:layout_marginTopPercent="11%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="75%w"
+        app:layout_marginTopPercent="14%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="75%w"
+        app:layout_marginTopPercent="17%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="75%w"
+        app:layout_marginTopPercent="20%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="75%w"
+        app:layout_marginTopPercent="23%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="75%w"
+        app:layout_marginTopPercent="26%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="75%w"
+        app:layout_marginTopPercent="29%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="75%w"
+        app:layout_marginTopPercent="32%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_cash_month"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="35%w"
+        app:layout_marginTopPercent="8%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_Unionpaycard_month"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="35%w"
+        app:layout_marginTopPercent="11%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_wechat_month"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="35%w"
+        app:layout_marginTopPercent="14%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_alipay_month"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="35%w"
+        app:layout_marginTopPercent="17%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_member_month"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="35%w"
+        app:layout_marginTopPercent="20%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_other_month"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="35%w"
+        app:layout_marginTopPercent="23%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_paytypeTot_month"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="35%w"
+        app:layout_marginTopPercent="26%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_lunch_month"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="35%w"
+        app:layout_marginTopPercent="29%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_dinner_month"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="35%w"
+        app:layout_marginTopPercent="32%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_takeout_month"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="35%w"
+        app:layout_marginTopPercent="35%w"
+        app:layout_widthPercent="10%w" />
+
+    <TextView
+        android:id="@+id/table_dealtypeTot_month"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="35%w"
+        app:layout_marginTopPercent="38%w"
+        app:layout_widthPercent="10%w" />
+
     <TextView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -149,7 +912,7 @@
         app:layout_marginLeftPercent="5%w"
         app:layout_marginTopPercent="8%w"
         app:layout_widthPercent="5%w" />
-    
+
     <TextView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -161,6 +924,132 @@
         app:layout_marginTopPercent="8%w"
         app:layout_widthPercent="1.2%w" />
 
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="15%w"
+        app:layout_marginLeftPercent="45%w"
+        app:layout_marginTopPercent="8%w"
+        app:layout_widthPercent="5%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:gravity="center"
+        android:text="收入类别"
+        app:layout_heightPercent="15%w"
+        app:layout_marginLeftPercent="47%w"
+        app:layout_marginTopPercent="8%w"
+        app:layout_widthPercent="1.2%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="15%w"
+        app:layout_marginLeftPercent="45%w"
+        app:layout_marginTopPercent="8%w"
+        app:layout_widthPercent="5%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:gravity="center"
+        android:text="收入类别"
+        app:layout_heightPercent="15%w"
+        app:layout_marginLeftPercent="47%w"
+        app:layout_marginTopPercent="8%w"
+        app:layout_widthPercent="1.2%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="6%w"
+        app:layout_marginLeftPercent="45%w"
+        app:layout_marginTopPercent="26%w"
+        app:layout_widthPercent="5%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="45%w"
+        app:layout_marginTopPercent="35%w"
+        app:layout_widthPercent="5%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:gravity="center"
+        android:text="优惠分析"
+        app:layout_heightPercent="6%w"
+        app:layout_marginLeftPercent="47%w"
+        app:layout_marginTopPercent="26%w"
+        app:layout_widthPercent="1.2%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:gravity="center"
+        android:text="退款"
+        app:layout_heightPercent="3%w"
+        app:layout_marginLeftPercent="47%w"
+        app:layout_marginTopPercent="35%w"
+        app:layout_widthPercent="1.2%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/tableline"
+        android:gravity="center"
+        android:text=""
+        app:layout_heightPercent="9%w"
+        app:layout_marginLeftPercent="5%w"
+        app:layout_marginTopPercent="29%w"
+        app:layout_widthPercent="5%w" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:gravity="center"
+        android:text="餐别分析"
+        app:layout_heightPercent="9%w"
+        app:layout_marginLeftPercent="7%w"
+        app:layout_marginTopPercent="29%w"
+        app:layout_widthPercent="1.2%w" />
+
+    <Button
+        android:id="@+id/print_dateAccount"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|right"
+        android:gravity="center"
+        android:text="当日菜品汇总打印"
+        app:layout_heightPercent="5%w"
+        app:layout_marginLeftPercent="5%w"
+        app:layout_marginTopPercent="45%w"
+        app:layout_widthPercent="20%w"  />
 
 
 </com.zhy.android.percent.support.PercentRelativeLayout>

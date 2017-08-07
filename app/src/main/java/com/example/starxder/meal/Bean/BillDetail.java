@@ -13,6 +13,15 @@ public class BillDetail {
     String avgTotalFee;
     //单均实收
     String avgPayFee;
+    //退款
+    String backFee;
+    public String getBackFee() {
+        return backFee;
+    }
+
+    public void setBackFee(String backFee) {
+        this.backFee = backFee;
+    }
 
     public String getTotalFee() {
         return totalFee;

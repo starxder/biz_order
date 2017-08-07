@@ -90,6 +90,7 @@ public class PrinterSetActivity extends Activity{
         key5="1";
         key6="1";
         key7="1";
+
         name1="全部";
         name2="全部";
         name3="全部";
@@ -266,49 +267,49 @@ public class PrinterSetActivity extends Activity{
             edtip_1.setText(printerDao.queryById(1).getIpaddress());
             edtProt1.setText(printerDao.queryById(1).getPort());
             cb1.setChecked(Boolean.valueOf(printerDao.queryById(1).getChecked()).booleanValue());
-            printer1_sp.setSelection(Integer.valueOf(printerDao.queryById(1).getDangkoukey()).intValue()-1);
+            printer1_sp.setSelection(Integer.valueOf(printerDao.queryById(1).getDangkoukey()).intValue());
         }
 
         if (printerDao.queryById(2)!=null){
             edtip_2.setText(printerDao.queryById(2).getIpaddress());
             edtProt2.setText(printerDao.queryById(2).getPort());
             cb2.setChecked(Boolean.valueOf(printerDao.queryById(2).getChecked()).booleanValue());
-            printer2_sp.setSelection(Integer.valueOf(printerDao.queryById(2).getDangkoukey()).intValue()-1);
+            printer2_sp.setSelection(Integer.valueOf(printerDao.queryById(2).getDangkoukey()).intValue());
         }
 
         if (printerDao.queryById(3)!=null){
             edtip_3.setText(printerDao.queryById(3).getIpaddress());
             edtProt3.setText(printerDao.queryById(3).getPort());
             cb3.setChecked(Boolean.valueOf(printerDao.queryById(3).getChecked()).booleanValue());
-            printer3_sp.setSelection(Integer.valueOf(printerDao.queryById(3).getDangkoukey()).intValue()-1);
+            printer3_sp.setSelection(Integer.valueOf(printerDao.queryById(3).getDangkoukey()).intValue());
         }
 
         if (printerDao.queryById(4)!=null){
             edtip_4.setText(printerDao.queryById(4).getIpaddress());
             edtProt4.setText(printerDao.queryById(4).getPort());
             cb4.setChecked(Boolean.valueOf(printerDao.queryById(4).getChecked()).booleanValue());
-            printer4_sp.setSelection(Integer.valueOf(printerDao.queryById(4).getDangkoukey()).intValue()-1);
+            printer4_sp.setSelection(Integer.valueOf(printerDao.queryById(4).getDangkoukey()).intValue());
         }
 
         if (printerDao.queryById(5)!=null){
             edtip_5.setText(printerDao.queryById(5).getIpaddress());
             edtProt5.setText(printerDao.queryById(5).getPort());
             cb5.setChecked(Boolean.valueOf(printerDao.queryById(5).getChecked()).booleanValue());
-            printer5_sp.setSelection(Integer.valueOf(printerDao.queryById(5).getDangkoukey()).intValue()-1);
+            printer5_sp.setSelection(Integer.valueOf(printerDao.queryById(5).getDangkoukey()).intValue());
         }
 
         if (printerDao.queryById(6)!=null){
             edtip_6.setText(printerDao.queryById(6).getIpaddress());
             edtProt6.setText(printerDao.queryById(6).getPort());
             cb6.setChecked(Boolean.valueOf(printerDao.queryById(6).getChecked()).booleanValue());
-            printer6_sp.setSelection(Integer.valueOf(printerDao.queryById(6).getDangkoukey()).intValue()-1);
+            printer6_sp.setSelection(Integer.valueOf(printerDao.queryById(6).getDangkoukey()).intValue());
         }
 
         if (printerDao.queryById(7)!=null){
             edtip_7.setText(printerDao.queryById(7).getIpaddress());
             edtProt7.setText(printerDao.queryById(7).getPort());
             cb7.setChecked(Boolean.valueOf(printerDao.queryById(7).getChecked()).booleanValue());
-            printer7_sp.setSelection(Integer.valueOf(printerDao.queryById(7).getDangkoukey()).intValue()-1);
+            printer7_sp.setSelection(Integer.valueOf(printerDao.queryById(7).getDangkoukey()).intValue());
         }
     }
 

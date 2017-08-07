@@ -179,10 +179,10 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
 
         if (wxorder.getBonus().equals("") || wxorder.getBonus().equals("0")) {
             bonus = 0;
-            tv_bonus.setText("会员卡积分：未使用积分");
+            tv_bonus.setText("微信会员积分：未使用积分");
         } else {
             bonus = Float.valueOf(wxorder.getBonus());
-            tv_bonus.setText("会员卡积分："+bonus/10+"元");
+            tv_bonus.setText("微信会员积分："+bonus/10+"元");
         }
 
         tv_totalFee.setText("应付：" + (Float.valueOf(wxorder.getOriginFee()) - faverfee - (bonus/10)) + "元");
@@ -222,7 +222,14 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
 
         if (wxorder.getIfpay().equals("false")) {
             tv_paystate.setText("支付状态：" + "未支付");
+            if (wxorder.getPaystyle().equals("member")){
+                tv_paystate.setText("支付状态：" + "储值卡未支付");
+            }
             tv_paytime.setText("");
+        }
+
+        if(wxorder.getIfpay().equals("true")&&wxorder.getPaystyle().equals("member")){
+            tv_paystate.setText("支付状态：" + "储值卡支付");
         }
 
 
@@ -256,7 +263,11 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
         int mealNum;
         for (int i = 0; i < length; i++) {
             meal = dao.queryBymealid(mealids[i] + "");
-            mealprice = Float.valueOf(meal.getMealprice());
+            if (wxorder.getPaystyle().equals("member")){
+                mealprice= Float.valueOf(meal.getMemberprice());
+            }else{
+                mealprice = Float.valueOf(meal.getMealprice());
+            }
             mealName = meal.getMealname();
             mealNum = mealNums[i];
             mealEZ = new MealEZ(mealprice, mealName, mealNum,meal.getMealtype2(),meal.getMealtypename2());
@@ -306,7 +317,7 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
             }
 
             MealDao dao = new MealDao(getActivity());
-            String backdetail = wxorder.getDetail();
+
             backmeallist = new ArrayList<>();
             Meal meal;
             MealEZ mealEZ;
@@ -315,7 +326,11 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
             int mealNum;
             for (int i = 0; i < length; i++) {
                 meal = dao.queryBymealid(mealids[i] + "");
-                mealprice = Float.valueOf(meal.getMealprice());
+                if (wxorder.getPaystyle().equals("member")){
+                    mealprice = Float.valueOf(meal.getMemberprice());
+                }else{
+                    mealprice = Float.valueOf(meal.getMealprice());
+                }
                 mealName = meal.getMealname();
                 mealNum = mealNums[i];
                 mealEZ = new MealEZ(mealprice, mealName, mealNum,meal.getMealtype2(),meal.getMealtypename2());
@@ -364,12 +379,12 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
                 break;
 
             case R.id.btn_counter:
-                Toast.makeText(getActivity(),"可以",Toast.LENGTH_LONG).show();
                 btn_counter.setEnabled(false);
                 btn_counter.setTextColor(Color.argb(55, 255, 255, 255));
+                PrinterDao printerDao1 = new PrinterDao(getActivity());
                 PrinterUtils p1;
-                p1 = new PrinterUtils("192.168.0.231", 9100, meallist, wxorder);
-                p1.printTest();
+                p1 = new PrinterUtils(printerDao1.queryById(1).getIpaddress(), 9100, meallist, wxorder);
+                p1.print();
                 break;
 
             case R.id.btn_print:
@@ -415,9 +430,12 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
                 break;
 
             case R.id.btn_account:
-                Toast.makeText(getActivity(),"可以",Toast.LENGTH_LONG).show();
                 btn_account.setEnabled(false);
                 btn_account.setTextColor(Color.argb(55, 255, 255, 255));
+                PrinterDao printerDao2 = new PrinterDao(getActivity());
+                PrinterUtils p2;
+                p2 = new PrinterUtils(printerDao2.queryById(1).getIpaddress(), 9100, meallist, wxorder);
+                p2.printAccount();
                 break;
 
             case R.id.btn_paystyle:

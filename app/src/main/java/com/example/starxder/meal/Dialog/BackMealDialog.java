@@ -107,14 +107,26 @@ public class BackMealDialog extends Dialog implements View.OnClickListener {
             case R.id.btn_backsubmit:
                 backMealnum = String.valueOf(edt_backnum.getText());
                 String backDetail = "";
-                if (wxorder.getBackDetail() != null&&wxorder.getBackDetail()!= "") {
-                    backfee = (Float.valueOf(wxorder.getBackFee())+ Float.valueOf(mealDao.queryBymealid(mealid).getMealprice()) * Float.valueOf(backMealnum)) + "";
-                    backDetail = wxorder.getBackDetail() + ";" + mealid + "," + backMealnum;
-                } else {
-                    backDetail = mealid + "," + backMealnum;
-                    backfee = Float.valueOf(mealDao.queryBymealid(mealid).getMealprice()) * Float.valueOf(backMealnum) + "";
+                if(wxorder.getPaystyle().equals("member")){
+                    if (wxorder.getBackDetail() != null&&wxorder.getBackDetail()!= "") {
+                        backfee = (Float.valueOf(wxorder.getBackFee())+ Float.valueOf(mealDao.queryBymealid(mealid).getMemberprice()) * Float.valueOf(backMealnum)) + "";
+                        backDetail = wxorder.getBackDetail() + ";" + mealid + "," + backMealnum;
+                    } else {
+                        backDetail = mealid + "," + backMealnum;
+                        backfee = Float.valueOf(mealDao.queryBymealid(mealid).getMemberprice()) * Float.valueOf(backMealnum) + "";
 
+                    }
+                }else{
+                    if (wxorder.getBackDetail() != null&&wxorder.getBackDetail()!= "") {
+                        backfee = (Float.valueOf(wxorder.getBackFee())+ Float.valueOf(mealDao.queryBymealid(mealid).getMealprice()) * Float.valueOf(backMealnum)) + "";
+                        backDetail = wxorder.getBackDetail() + ";" + mealid + "," + backMealnum;
+                    } else {
+                        backDetail = mealid + "," + backMealnum;
+                        backfee = Float.valueOf(mealDao.queryBymealid(mealid).getMealprice()) * Float.valueOf(backMealnum) + "";
+
+                    }
                 }
+
 //                http://www.jiatuokeji.com/web-frame/wxorder/updateBackByCode.do?outTradeNo=20170613104257114&backFee=100&backDetail=53,1
                 request("http://www.jiatuokeji.com/web-frame/wxorder/updateBackByCode.do?outTradeNo=" + wxorder.getOutTradeNo() + "&backFee=" + backfee + "&backDetail=" + backDetail);
                 break;
